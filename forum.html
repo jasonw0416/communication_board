@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    *{
+        margin: 0;
+        background: paleturquoise;
+    }
+    div{
+        padding: 15px;
+    }
+    img{
+        max-width: 70%;
+        height: auto;
+    }
+    nav{
+        background: cornflowerblue;
+    }
+    a{
+        padding: 15px;
+        background: cornflowerblue;
+    }
+    .main-question{
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .page-arrow{
+        background: white;
+    }
+    .list-group{
+        width: 40%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .pagination{
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .parallax {
+        background-image: url("images/chemistry.jpg");
+        /* Set a specific height */
+        min-height: 500px;
+        /* Create the parallax scrolling effect */
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Chemiqualancer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+
+<body>
+<script src="http://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+<script>
+    function successExit() {
+        document.getElementById("success_alert").style.display="none";
+    }
+    function errorExit() {
+        document.getElementById("success_alert").style.display="none";
+    }
+    function success() {
+        if(document.getElementById("error_alert").style.display === ""){
+            document.getElementById("error_alert").style.display = "none";
+        }
+        document.getElementById("success_alert").style.display="";
+        setTimeout(successExit, 8000);
+    }
+    function error() {
+        if(document.getElementById("success_alert").style.display === ""){
+            document.getElementById("success_alert").style.display = "none";
+        }
+        document.getElementById("error_alert").style.display="";
+        setTimeout(errorExit, 8000);
+    }
+    function double() {
+        balance();
+        success();
+    }
+</script>
+<script type="text/javascript" src="balance.js"></script>
+
+<div>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">Chemiqualancer Forum Page</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <nav class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <nav class="navbar-nav">
+                <a class="nav-link active" href="/chemiqualancer/home.html/">Home <span class="sr-only"></span></a>
+                <a class="nav-link active" href="/chemiqualancer/forum.html/">Forum <span class="sr-only"></span></a>
+            </nav>
+        </nav>
+    </nav>
+
+
+    <br>
+    <div class="main-question">
+        <form class="row g-3">
+            <div class="col-sm">
+                <label for="question" class="visually-hidden">Question</label>
+                <input type="question" class="form-control" id="question" placeholder="What do you want to ask or talk about?">
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-3">Submit!</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action">How do you balance this??</a>
+        <a href="#" class="list-group-item list-group-item-action">What is acid and base???</a>
+        <a href="#" class="list-group-item list-group-item-action">Where do I find the periodic table??</a>
+        <a href="#" class="list-group-item list-group-item-action">What are metals and nonmetals?</a>
+        <a href="#" class="list-group-item list-group-item-action">How do I memorize all the elements?</a>
+        <a href="#" class="list-group-item list-group-item-action">How do you balance this??</a>
+        <a href="#" class="list-group-item list-group-item-action">What is acid and base???</a>
+        <a href="#" class="list-group-item list-group-item-action">Where do I find the periodic table??</a>
+        <a href="#" class="list-group-item list-group-item-action">What are metals and nonmetals?</a>
+        <a href="#" class="list-group-item list-group-item-action">How do I memorize all the elements?</a>
+        <a href="#" class="list-group-item list-group-item-action">What is acid and base???</a>
+        <a href="#" class="list-group-item list-group-item-action">Where do I find the periodic table??</a>
+        <a href="#" class="list-group-item list-group-item-action">What are metals and nonmetals?</a>
+        <a href="#" class="list-group-item list-group-item-action">How do I memorize all the elements?</a>
+        <a href="#" class="list-group-item list-group-item-action">What is acid and base???</a>
+        <a href="#" class="list-group-item list-group-item-action">Where do I find the periodic table??</a>
+        <a href="#" class="list-group-item list-group-item-action">What are metals and nonmetals?</a>
+        <a href="#" class="list-group-item list-group-item-action">How do I memorize all the elements?</a>
+    </div>
+
+    <ul class="pagination justify-content-center">
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+                <span class="page-arrow" aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">4</a></li>
+        <li class="page-item"><a class="page-link" href="#">5</a></li>
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+                <span class="page-arrow" aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+
+</div>
+
+
+</body>
+</html>
