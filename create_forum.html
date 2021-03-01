@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+    .home_text {
+        font-size: 200%;
+        font-family: Georgia;
+        display: inline-block;
+    }
+
+    div{
+        padding: 3px;
+    }
+
+    #ask {
+        float: right;
+    }
+    img{
+        max-width: 70%;
+        height: auto;
+    }
+    nav{
+        background: cornflowerblue;
+    }
+    strong {
+        font-size: 125%;
+    }
+    b {
+        font-size: 150%;
+    }
+    a {
+        padding: 15px;
+        background: cornflowerblue;
+    }
+    #question{
+        height: 200px;
+    }
+
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+<body>
+<script src="http://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+
+<div class="column">
+    <div class="home_text" onClick="">Bialigy Communication Forum</div>
+</div>
+
+<div class="row">
+    <div><nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">Chemiqualancer</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <nav class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <nav class="navbar-nav">
+                <a class="nav-link active" href="/home.html/">Home <span class="sr-only"></span></a>
+                <a class="nav-link active" href="/forum.html/">Forum <span class="sr-only"></span></a>
+            </nav>
+        </nav>
+    </nav></div>
+
+</div>
+<br>
+
+<div class="row">
+    <input class="form-control" id="name" placeholder="Name (Optional)">
+</div>
+<br>
+<div class="row">
+    <textarea class="form-control" id="question" placeholder="Ask your question here"></textarea>
+</div>
+
+<button class="add_question" onclick="">Add</button>
+
+</body>
+</html>
