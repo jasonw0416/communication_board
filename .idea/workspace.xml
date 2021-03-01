@@ -2,18 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a3b787a-1dd3-4228-9ca2-2f855180ac26" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/communication_board.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/textBoxes/getTextBoxes.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/textBoxes/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/utils.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/plugins/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/plugins/sql.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/routes/api/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/routes/api/textBoxes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -35,11 +51,12 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="index.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/index.js" working-dir="$PROJECT_DIR$">
+    <configuration name="index.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/index.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
     <recent_temporary>
@@ -70,7 +87,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1614568223992</updated>
-      <workItem from="1614568225730" duration="1223000" />
+      <workItem from="1614568225730" duration="8438000" />
     </task>
     <servers />
   </component>
@@ -86,21 +103,21 @@
       <screen x="2048" y="25" width="2560" height="1055" />
     </state>
     <state x="3318" y="369" key="#com.intellij.fileTypes.FileTypeChooser/2048.25.2560.1055/0.25.2048.1255@2048.25.2560.1055" timestamp="1614570177713" />
-    <state width="1705" height="290" key="GridCell.Tab.0.bottom" timestamp="1614568668639">
+    <state width="1705" height="290" key="GridCell.Tab.0.bottom" timestamp="1614580370237">
       <screen x="2048" y="25" width="2560" height="1055" />
     </state>
-    <state width="1705" height="290" key="GridCell.Tab.0.bottom/2048.25.2560.1055/0.25.2048.1255@2048.25.2560.1055" timestamp="1614568668639" />
-    <state width="1705" height="290" key="GridCell.Tab.0.center" timestamp="1614568668638">
+    <state width="1705" height="290" key="GridCell.Tab.0.bottom/2048.25.2560.1055/0.25.2048.1255@2048.25.2560.1055" timestamp="1614580370237" />
+    <state width="1705" height="290" key="GridCell.Tab.0.center" timestamp="1614580370236">
       <screen x="2048" y="25" width="2560" height="1055" />
     </state>
-    <state width="1705" height="290" key="GridCell.Tab.0.center/2048.25.2560.1055/0.25.2048.1255@2048.25.2560.1055" timestamp="1614568668638" />
-    <state width="1705" height="290" key="GridCell.Tab.0.left" timestamp="1614568668638">
+    <state width="1705" height="290" key="GridCell.Tab.0.center/2048.25.2560.1055/0.25.2048.1255@2048.25.2560.1055" timestamp="1614580370236" />
+    <state width="1705" height="290" key="GridCell.Tab.0.left" timestamp="1614580370236">
       <screen x="2048" y="25" width="2560" height="1055" />
     </state>
-    <state width="1705" height="290" key="GridCell.Tab.0.left/2048.25.2560.1055/0.25.2048.1255@2048.25.2560.1055" timestamp="1614568668638" />
-    <state width="1705" height="290" key="GridCell.Tab.0.right" timestamp="1614568668639">
+    <state width="1705" height="290" key="GridCell.Tab.0.left/2048.25.2560.1055/0.25.2048.1255@2048.25.2560.1055" timestamp="1614580370236" />
+    <state width="1705" height="290" key="GridCell.Tab.0.right" timestamp="1614580370236">
       <screen x="2048" y="25" width="2560" height="1055" />
     </state>
-    <state width="1705" height="290" key="GridCell.Tab.0.right/2048.25.2560.1055/0.25.2048.1255@2048.25.2560.1055" timestamp="1614568668639" />
+    <state width="1705" height="290" key="GridCell.Tab.0.right/2048.25.2560.1055/0.25.2048.1255@2048.25.2560.1055" timestamp="1614580370236" />
   </component>
 </project>

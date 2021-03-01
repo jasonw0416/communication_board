@@ -1,0 +1,21 @@
+NODE_ENV=development
+
+# hapi server config
+PORT=Port_Number
+HOST=Address
+HOST_URL=https://address:Port_Number
+COOKIE_ENCRYPT_PWD= Sample_Password
+
+
+#sql server config
+SQL_USER= User
+SQL_PASSWORD=Sample_Password
+SQL_DATABASE=Database_You_Want_To_Connect_To
+SQL_SERVER=Address
+SQL_ENCRYPT=true/false
+
+
+#okta config
+OKTA_ORG_URL=https://{yourOrgURL}
+OKTA_CLIENT_ID={yourclientID}
+OKTA_CLIENT_SECRET{yourClientSecret}
