@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/communication_board.iml" filepath="$PROJECT_DIR$/.idea/communication_board.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/nodejssql.iml" filepath="$PROJECT_DIR$/.idea/nodejssql.iml" />
     </modules>
   </component>
 </project>

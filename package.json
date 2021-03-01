@@ -1,0 +1,26 @@
+{
+  "name": "communication_board",
+  "version": "1.0.0",
+  "description": "A Communication Board used for Bialigy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "main": "index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daduuu/communication_board.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daduuu/communication_board/issues"
+  },
+  "homepage": "https://github.com/daduuu/communication_board#readme",
+  "dependencies": {
+    "@hapi/hapi": "^20.1.0",
+    "dotenv": "^8.2.0",
+    "hapi": "^18.1.0"
+  }
+}
