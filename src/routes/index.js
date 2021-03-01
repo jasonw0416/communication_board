@@ -1,6 +1,7 @@
 "use strict";
 
 const api = require("./api");
+const path = require("path")
 
 
 module.exports.register = async server => {
@@ -11,7 +12,7 @@ module.exports.register = async server => {
         method:"GET",
         path:"/",
         handler: async (request, h) => {
-            return "My first hapi server!";
+            return h.file('./create_forum.html');
         }
     });
 };
