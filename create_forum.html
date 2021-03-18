@@ -114,8 +114,74 @@
     <div id="editor"></div>
 </div>
 
-<button id="postText" class="btn btn-info">Post</button>
 
+<div class="row">
+    <div class="col-sm-4">
+        <button id="postText" class="btn btn-info">Post</button>
+    </div>
+    <div class="col-sm-4">
+        <input type="text" id="categoryIdPost" value="categoryId"><br><br>
+    </div>
+    <div class="col-sm-4">
+        <input type="text" id="userIdPost" value="userId"><br><br>
+    </div>
+
+</div>
+
+<h2>Update</h2>
+
+<div class="row" style="margin-top: 10px; background-color:#F5F5F5;">
+    <div id="toolbar"></div>
+    <div id="editor2"></div>
+</div>
+
+<div class="row">
+    <div class="col-sm-3">
+        <button id="updateText" class="btn btn-info">Update</button>
+    </div>
+    <div class="col-sm-3">
+        <input type="text" id="textBoxId" value="textBoxId"><br><br>
+    </div>
+    <div class="col-sm-3">
+        <input type="text" id="userId" value="userId"><br><br>
+    </div>
+    <div class="col-sm-3">
+        <input type="text" id="categoryId" value="categoryId"><br><br>
+    </div>
+</div>
+
+<h2>Delete</h2>
+
+<div class="row">
+    
+    <div class="col-sm-4">
+        <button id="deleteText" class="btn btn-info">Delete</button>
+    </div>
+    <div class="col-sm-4">
+        <input type="text" id="textBoxIdDelete" value="textBoxId"><br><br>
+    </div>
+    <div class="col-sm-4">
+        <input type="text" id="userIdDelete" value="userId"><br><br>
+    </div>
+</div>
+
+<h2>Get</h2>
+<div class="row" style="margin-top: 10px; background-color:#F5F5F5;">
+    <div id="toolbar"></div>
+    <div id="editor3"></div>
+</div>
+
+<div class="row">
+    <div class="col-sm-3">
+        <button id="getText" class="btn btn-info">Get</button>
+    </div>
+    <div class="col-sm-3">
+        <input type="text" id="textBoxIdGet" value="textBoxId"><br><br>
+    </div>
+    <div class="col-sm-3">
+        <input type="text" id="userIdGet" value="userId"><br><br>
+    </div>
+</div>
 
 </body>
 
@@ -138,24 +204,89 @@
         theme: 'snow'
     });
 
+    var quill2 = new Quill('#editor2', {
+        modules: {
+            toolbar: toolbarOptions
+        },
+
+        theme: 'snow'
+    });
+
+    var quill3 = new Quill('#editor3', {
+        modules: {
+            toolbar: toolbarOptions
+        },
+
+        theme: 'snow'
+    });
+
     
 
     $('#postText').click(function () {
         window.post = quill.getContents();
-        console.log(window.post);
+    
         $.post("/api/textBoxes", 
         {
-            addOrUpdate: 0, //0 is add
-            categoryId: 10,
+            addOrUpdate: 0, //0 is add, 1 is update, 2 is delete, 3 is get
+            categoryId: $('#categoryIdPost').val(),
             userId: 1,
             writtenText: JSON.stringify(window.post),
             boxPrevious: 10,
             boxNext: 10
         },
         function(data, status){
-    alert("Data: " + data + "\nStatus: " + status);
+            alert("success!");
         });
     }); 
+
+
+        $('#updateText').click(function () {
+        window.post2 = quill2.getContents();
+    
+        $.post("/api/textBoxes", 
+        {
+            addOrUpdate: 1, //0 is add, 1 is update, 2 is delete, 3 is get
+            textBoxId: $('#textBoxId').val(),
+            userId: $('#userId').val(),
+            categoryId: $('#categoryId').val(),
+            writtenText: JSON.stringify(window.post2),
+        },
+        function(data, status){
+            alert("success!");
+        });
+    }); 
+
+    $('#deleteText').click(function () {
+        $.post("/api/textBoxes", 
+        {
+            addOrUpdate: 2, //0 is add, 1 is update, 2 is delete, 3 is get
+            textBoxId: $('#textBoxIdDelete').val(),
+            userId: $('#userIdDelete').val(),
+        },
+        function(data, status){
+    alert("success!");
+        });
+        
+        
+    }); 
+    $('#getText').click(function () {
+        $.post("/api/textBoxes", 
+        {
+            addOrUpdate: 3, //0 is add, 1 is update, 2 is delete, 3 is get
+            textBoxId: $('#textBoxIdGet').val(),
+            userId: $('#userIdGet').val(),
+        },
+        function(data, status){
+            console.log(data);
+            quill3.setContents(JSON.parse(data.writtenText));
+        });
+        
+        
+    }); 
+
+
+
+
 
 </script>
 
