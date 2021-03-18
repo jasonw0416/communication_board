@@ -11,7 +11,7 @@ module.exports.register = async server => {
             try {
                 
                 const db = request.server.plugins.sql.client;
-                const userId = 1;
+                const userId = 2;
                 const res = await db.textBoxes.getTextBoxes(userId);
 
                 return res.recordset;
@@ -25,21 +25,21 @@ module.exports.register = async server => {
     server.route( {
         method: "POST",
         path: "/api/textBoxes",
-        config: {
-            
-            handler: async request => {
-                try {
-                    const db = request.server.plugins.sql.client;
-                    //const userId = 1;
-                    const {categoryId, userId, writtenText, boxPrevious, boxNext} = request.payload;
-                    const res = await db.textBoxes.addTextBox({categoryId, userId, writtenText, boxPrevious, boxNext});
-                    return res.recordset[0];
-                } catch (err) {
-                    server.log(err);
-                    return boom.boomify(err);
-                }
+        
+        handler: async request => {
+            try {
+                const db = request.server.plugins.sql.client;
+                //const userId = 1;
+                const {categoryId, userId, writtenText, boxPrevious, boxNext} = request.payload;
+                console.log(request.payload);
+                const res = await db.textBoxes.addTextBox({categoryId, userId, writtenText, boxPrevious, boxNext});
+                return res.recordset[0];
+            } catch (err) {
+                server.log(err);
+                return boom.boomify(err);
             }
         }
+
     } );
 
     server.route( {

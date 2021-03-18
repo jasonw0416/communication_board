@@ -2,4 +2,4 @@ INSERT INTO [textBox] ([categoryId], [userId], [writtenText], [boxPrevious], [bo
 VALUES
 (@categoryId, @userId, @writtenText, @boxPrevious, @boxNext)
 
-SELECT SCOPE_IDENTITY() AS textBoxId;
+SELECT SCOPE_IDENTITY() AS userId;

@@ -1,2 +1,3 @@
 SELECT *
-FROM    [textBox]
+FROM [textBox]
+WHERE [userId] = @userId

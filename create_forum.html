@@ -138,9 +138,25 @@
         theme: 'snow'
     });
 
+    
+
     $('#postText').click(function () {
         window.post = quill.getContents();
-    });
+        console.log(window.post);
+        $.post("/api/textBoxes", 
+        {
+            addOrUpdate: 0, //0 is add
+            categoryId: 10,
+            userId: 1,
+            writtenText: JSON.stringify(window.post),
+            boxPrevious: 10,
+            boxNext: 10
+        },
+        function(data, status){
+    alert("Data: " + data + "\nStatus: " + status);
+        });
+    }); 
+
 </script>
 
 </html>
