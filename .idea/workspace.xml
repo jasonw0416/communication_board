@@ -22,17 +22,19 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="javascript.nodejs.core.library.configured.version" value="12.14.1" />
+    <property name="javascript.nodejs.core.library.configured.version" value="14.15.0" />
+    <property name="javascript.nodejs.core.library.typings.version" value="14.14.35" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../chemiqualancer" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -50,18 +52,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
-  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -73,12 +64,17 @@
       <option name="presentableId" value="Default" />
       <updated>1614568223992</updated>
       <workItem from="1614568225730" duration="8438000" />
+<<<<<<< HEAD
       <workItem from="1615754948669" duration="5682000" />
+=======
+      <workItem from="1615754948669" duration="5494000" />
+      <workItem from="1615995026554" duration="2479000" />
+>>>>>>> 7a85b45515202c95c229ed9e4fffb4a23a0e4be9
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
     <state x="3040" y="221" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1614568443335">
@@ -89,6 +85,10 @@
       <screen x="2048" y="25" width="2560" height="1055" />
     </state>
     <state x="3318" y="369" key="#com.intellij.fileTypes.FileTypeChooser/2048.25.2560.1055/0.25.2048.1255@2048.25.2560.1055" timestamp="1614570177713" />
+    <state x="819" y="274" key="FileChooserDialogImpl" timestamp="1616024090861">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="819" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1616024090861" />
     <state width="1705" height="290" key="GridCell.Tab.0.bottom" timestamp="1614580370237">
       <screen x="2048" y="25" width="2560" height="1055" />
     </state>

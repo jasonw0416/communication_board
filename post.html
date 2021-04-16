@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.7/quill.js"></script>
 </head>
 <style>
     *{
@@ -55,6 +57,7 @@
         border-color: #000000;
     }
 </style>
+
 <body>
 <div class="menu-padding">
     <nav class="navbar navbar-expand-lg navbar-light">
@@ -66,6 +69,37 @@
             <nav class="navbar-nav">
                 <a class="nav-link active" href="/chemiqualancer/home.html/">Home <span class="sr-only"></span></a>
                 <a class="nav-link active" href="/chemiqualancer/forum.html/">Forum <span class="sr-only"></span></a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" style="color:black" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
+                        Chapters
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="#" style="color:black;">Chapter 1</a></li>
+                        <li><a class="dropdown-item" href="#" style="color:black;">Chapter 2</a></li>
+                        <li><a class="dropdown-item" href="#" style="color:black;">Chapter 3</a></li>
+                        <li><a class="dropdown-item" href="#" style="color:black;">Chapter 4</a></li>
+                        <li><a class="dropdown-item" href="#" style="color:black;">Chapter 5</a></li>
+                        <li><a class="dropdown-item" href="#" style="color:black;">Chapter 6</a></li>
+                        <li><a class="dropdown-item" href="#" style="color:black;">Chapter 7</a></li>
+                        <li><a class="dropdown-item" href="#" style="color:black;">Chapter 8</a></li>
+                        <li><a class="dropdown-item" href="#" style="color:black;">Chapter 9</a></li>
+                        <li><a class="dropdown-item" href="#" style="color:black;">Chapter 10</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" style="color:black" id="navbarDropdownMenuLink2" role="button" data-toggle="dropdown" aria-expanded="false">
+                        Topics
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="#" style="color:black;">Acids and Bases</a></li>
+                        <li><a class="dropdown-item" href="#" style="color:black;">Molecules, Compounds</a></li>
+                        <li><a class="dropdown-item" href="#" style="color:black;">Chemical Reactions</a></li>
+                        <li><a class="dropdown-item" href="#" style="color:black;">Thermochemistry</a></li>
+                        <li><a class="dropdown-item" href="#" style="color:black;">Periodic Table</a></li>
+                        <li><a class="dropdown-item" href="#" style="color:black;">Chemical Bonding</a></li>
+                        <li><a class="dropdown-item" href="#" style="color:black;">Matter and States</a></li>
+                    </ul>
+                </li>
             </nav>
         </nav>
     </nav>
@@ -111,7 +145,8 @@
                         YZ
                     </div>
                     <div class="panel-footer">
-                        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#comment1">Comment</button>
+                        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#comment1">Replies</button>
+                        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#reply1" onclick=>Comment</button>
                         <div id="comment1" class="collapse">
                             <div class="comment" style="margin-top: 10px; background-color:#F5F5F5;">
                                 <div class="panel panel-default">
@@ -140,6 +175,12 @@
                                 </div>
                             </div>
                         </div>
+                        <div id="reply1" class="collapse">
+                            <div id="toolbar"></div>
+                            <div id="editor"></div>
+                            <button id="postText" class="btn btn-info">Post</button>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -163,7 +204,8 @@
                         YZ
                     </div>
                     <div class="panel-footer">
-                        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#comment2">Comment</button>
+                        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#comment2">Replies</button>
+                        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#reply2" onclick=>Comment</button>
                         <div id="comment2" class="collapse">
                             <div class="comment" style="margin-top: 10px; background-color:#F5F5F5;">
                                 <div class="panel panel-default">
@@ -192,6 +234,11 @@
                                 </div>
                             </div>
                         </div>
+                        <div id="reply2" class="collapse">
+                            <div id="toolbar2"></div>
+                            <div id="editor2"></div>
+                            <button id="postText2" class="btn btn-info">Post</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -215,7 +262,8 @@
                         YZ
                     </div>
                     <div class="panel-footer">
-                        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#comment">Comment</button>
+                        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#comment">Replies</button>
+                        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#reply3" onclick=>Comment</button>
                         <div id="comment" class="collapse">
                             <div class="comment" style="margin-top: 10px; background-color:#F5F5F5;">
                                 <div class="panel panel-default">
@@ -244,6 +292,11 @@
                                 </div>
                             </div>
                         </div>
+                        <div id="reply3" class="collapse">
+                            <div id="toolbar3"></div>
+                            <div id="editor3"></div>
+                            <button id="postText3" class="btn btn-info">Post</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -254,4 +307,48 @@
 
 </div>
 </body>
+
+<script>
+    var toolbarOptions = [['bold', 'italic', 'underline', 'strike'],
+        ['blockquote', 'code-block'],
+        [{'list' : 'ordered'}, {'list' : 'bullet'}],
+        [{'script' : 'sub'}, {'script' : 'super'}],
+        [{'direction' : 'rtl'}],
+        [{'size' : ['small', false, 'large', 'huge']}],
+        [{'font' : []}],
+        ['link', 'image', 'video', 'formula'],
+        [{'color' : []}, {'background' : []}]];
+
+    var quill = new Quill('#editor', {
+        modules: {
+            toolbar: toolbarOptions
+        },
+        theme: 'snow'
+    });
+
+    var quill2 = new Quill('#editor2', {
+        modules: {
+            toolbar: toolbarOptions
+        },
+        theme: 'snow'
+    });
+
+    var quill3 = new Quill('#editor3', {
+        modules: {
+            toolbar: toolbarOptions
+        },
+        theme: 'snow'
+    });
+
+    $('#postText').click(function () {
+        window.post = quill.getContents();
+    });
+    $('#postText2').click(function () {
+        window.post2 = quill2.getContents();
+    });
+    $('#postText3').click(function () {
+        window.post3 = quill3.getContents();
+    });
+
+</script>
 </html>
