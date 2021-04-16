@@ -105,7 +105,7 @@
     </nav>
     <br>
 
-    <button id="getText" class="btn btn-info">Get</button>
+    <button id="getQues" class="btn btn-info">Get Question</button>
 
     <div class="question">
         <div class="row">
@@ -129,11 +129,14 @@
         </div>
     </div>
 
+    <button id="getAns" class="btn btn-info">Get Answer</button>
+
+
     <div class="answer">
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2">
-                <div class="panel panel-default blackborder">
-                    <div class="panel-heading" >
+                <div id="answer1" class="panel panel-default blackborder">
+                    <!--<div class="panel-heading" >
                         <h4 style="background-color:transparent">Answer 1</h4>
                         <p style="background-color:transparent">By Anonymous</p>
                     </div>
@@ -146,8 +149,8 @@
                         TUV<br>
                         WX<br>
                         YZ
-                    </div>
-                    <div class="panel-footer">
+                    </div>-->
+                    <!--<div class="panel-footer">
                         <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#comment1">Replies</button>
                         <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#reply1" onclick=>Comment</button>
                         <div id="comment1" class="collapse">
@@ -184,7 +187,7 @@
                             <button id="postText" class="btn btn-info">Post</button>
                         </div>
 
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </div>
@@ -218,8 +221,7 @@
     $('#postText').click(function () {
         window.post = quill.getContents();
     });
-/*
-    $('#getText').click(function () {
+    /*$('#getQues').click(function () {
         data = {textBoxId: 1, writtenText: "{\"ops\":[{\"insert\":\"wdadawdawd\\n\"}]}"};
         console.log(data);
         //quill3.setContents(JSON.parse(data.writtenText));
@@ -243,7 +245,7 @@
 
     });*/
 
-    $('#getText').click(function () {
+    $('#getQues').click(function () {
         $.post("/api/textBoxes",
             {
                 addOrUpdate: 3, //0 is add, 1 is update, 2 is delete, 3 is get
@@ -257,6 +259,63 @@
 
                 document.getElementById('question1').innerHTML += `<div class="panel-heading">
                         <h1 style="background-color:transparent">I HAVE A QUESTION</h1>
+                    </div>
+                    <div class="panel-body" id=`+ id + `>` + `</div>`;
+
+
+                var id_for_quills = '#' + id;
+                quills[data.textBoxId] = new Quill(id_for_quills, {
+                    modules: {
+                        toolbar: false
+                    },
+                    theme: 'snow'
+                });
+
+                quills[data.textBoxId].setContents(JSON.parse(data.writtenText));
+            });
+
+    });
+
+
+    /*$('#getAns').click(function () {
+        data = {textBoxId: 2, writtenText: "{\"ops\":[{\"insert\":\"HI\\n\"}]}"};
+        var id = "editor" + data.textBoxId;
+
+        document.getElementById('answer1').innerHTML += `
+                    <div class="panel-heading" >
+                        <h4 style="background-color:transparent">Answer 1</h4>
+                        <p style="background-color:transparent">By Anonymous</p>
+                    </div>
+                    <div class="panel-body" id=`+ id + `>` + `</div>`;
+
+
+        var id_for_quills = '#' + id;
+        quills[data.textBoxId] = new Quill(id_for_quills, {
+            modules: {
+                toolbar: false
+            },
+            theme: 'snow'
+        });
+
+        quills[data.textBoxId].setContents(JSON.parse(data.writtenText));
+
+    });*/
+
+    $('#getAns').click(function () {
+        $.post("/api/textBoxes",
+            {
+                addOrUpdate: 3, //0 is add, 1 is update, 2 is delete, 3 is get
+                textBoxId: $('#textBoxIdGet').val(),
+                userId: $('#userIdGet').val(),
+            },
+            function (data, status) {
+                console.log(data);
+                var id = "editor" + data.textBoxId;
+
+                document.getElementById('answer1').innerHTML += `
+                    <div class="panel-heading" >
+                        <h4 style="background-color:transparent">Answer 1</h4>
+                        <p style="background-color:transparent">By Anonymous</p>
                     </div>
                     <div class="panel-body" id=`+ id + `>` + `</div>`;
 

@@ -1,18 +1,18 @@
 NODE_ENV=development
 
 # hapi server config
-PORT=Port_Number
-HOST=Address
-HOST_URL=https://address:Port_Number
-COOKIE_ENCRYPT_PWD= Sample_Password
+PORT=3000
+HOST=localhost
+HOST_URL=https://localhost:3000
+COOKIE_ENCRYPT_PWD=awpomd123908zmc2AWpok12AWD321adsDZX#lkms#
 
 
 #sql server config
-SQL_USER= User
-SQL_PASSWORD=Sample_Password
-SQL_DATABASE=Database_You_Want_To_Connect_To
-SQL_SERVER=Address
-SQL_ENCRYPT=true/false
+SQL_USER=sa
+SQL_PASSWORD= P@55w0rd
+SQL_DATABASE=communicationBoard
+SQL_SERVER=localhost
+SQL_ENCRYPT=false
 
 
 #okta config
