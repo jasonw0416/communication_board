@@ -345,15 +345,74 @@
     });
 
     function getDatabase () {
-        $.get("/api/textBoxes", 
-            function(data, status) {
-                alert(data);
+        var ret = [];
+        $.ajax({
+        url: "/api/textBoxes",
+        type: 'get',
+   
+        async: false,
+        success: function(data) {
+            var questions = getQuestions(data);
+            ret = getQuestionsAndAnswers(data, questions);
+        } 
+        });
+        return ret;
+        /*$.get("/api/textBoxes", 
+            function(data, status) {;
+                var questions = getQuestions(data);
+                var ret = getQuestionsAndAnswers(data, questions);
+                
+           
             }
         
         )
+        console.log(database);*/
+
     }
 
-    //console.log(getDatabase()); <- gets everything from database table textBox
+    function getQuestions(data){
+
+        var questions = [];
+            for(var i = 0; i < data.length; i++){
+                if(data[i].boxPrevious == null){
+                    questions.push(data[i]);
+                }
+            }
+        return questions;
+        
+    }
+
+    function searchForTextBoxId(Id, data){
+        for(var i = 0; i < data.length; i++){
+                if(data[i].textBoxId == Id){
+                    return data[i];
+                }
+            }
+    }
+
+    function getQuestionsAndAnswers(data, questions){
+        var ret = [];
+        for(var i = 0; i < questions.length; i++){
+            var answers = [];
+            answers.push(questions[i]);
+            var currentBox = questions[i];
+            while(currentBox.boxNext != null){
+                answers.push(searchForTextBoxId(currentBox.boxNext, data));
+                currentBox = searchForTextBoxId(currentBox.boxNext, data);
+                if(currentBox == null){
+                    break;
+                }
+            }
+            ret.push(answers);
+        }
+        return ret;
+    }
+
+   
+
+    console.log(getDatabase());
+
+
 
     
 
