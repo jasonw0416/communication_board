@@ -5,11 +5,9 @@ const utils = require("../utils");
 const register = async({sql, getConnection}) => {
     const sqlQueries = await utils.loadSqlQueries("textBoxes");
 
-    const getTextBoxes = async ({textBoxId, userId}) => {
+    const getTextBoxes = async () => {
         const connection = await getConnection();
-
         const request = await connection.request();
-        request.input("userId", sql.Int, 1);
         return await request.query(sqlQueries.getTextBoxes);
     };
 

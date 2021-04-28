@@ -1,7 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:heroku" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="0a3b787a-1dd3-4228-9ca2-2f855180ac26" name="Default Changelist" comment="" />
+    <list default="true" id="0a3b787a-1dd3-4228-9ca2-2f855180ac26" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/create_post.html" beforeDir="false" afterPath="$PROJECT_DIR$/create_post.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample_env.txt" beforeDir="false" afterPath="$PROJECT_DIR$/sample_env.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -66,11 +93,24 @@
       <workItem from="1614568225730" duration="8438000" />
       <workItem from="1615754948669" duration="5494000" />
       <workItem from="1615995026554" duration="2479000" />
+      <workItem from="1618544063663" duration="4120000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="3040" y="221" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1614568443335">
@@ -101,5 +141,9 @@
       <screen x="2048" y="25" width="2560" height="1055" />
     </state>
     <state width="1705" height="290" key="GridCell.Tab.0.right/2048.25.2560.1055/0.25.2048.1255@2048.25.2560.1055" timestamp="1614580370236" />
+    <state x="854" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1618546433352">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="854" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1618546433352" />
   </component>
 </project>
