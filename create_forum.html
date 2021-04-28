@@ -120,7 +120,22 @@
         <button id="postText" class="btn btn-info">Post</button>
     </div>
     <div class="col-sm-4">
-        <input type="text" id="categoryIdPost" value="categoryId"><br><br>
+        <div class="dropdown">
+            <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                Select Category
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#">Acids and Bases</a></li>
+                <li><a class="dropdown-item" href="#">Molecules and Compounds</a></li>
+                <li><a class="dropdown-item" href="#">Chemical Reactions</a></li>
+                <li><a class="dropdown-item" href="#">Thermochemistry</a></li>
+                <li><a class="dropdown-item" href="#">Periodic Table</a></li>
+                <li><a class="dropdown-item" href="#">Chemical Bonding</a></li>
+                <li><a class="dropdown-item" href="#">Matter and States</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Other</a></li>
+            </ul>
+        </div>
     </div>
     <div class="col-sm-4">
         <input type="text" id="userIdPost" value="userId"><br><br>
@@ -186,6 +201,15 @@
 </body>
 
 <script>
+    $( document ).ready(function() {
+        $('.dropdown').each(function (key, dropdown) {
+            var $dropdown = $(dropdown);
+            $dropdown.find('.dropdown-menu a').on('click', function () {
+                $dropdown.find('button').text($(this).text()).append(' <span class="caret"></span>');
+            });
+        });
+    });
+
     var toolbarOptions = [['bold', 'italic', 'underline', 'strike'],
         ['blockquote', 'code-block'],
         [{'list' : 'ordered'}, {'list' : 'bullet'}],
