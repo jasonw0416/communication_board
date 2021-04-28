@@ -11,8 +11,7 @@ module.exports.register = async server => {
             try {
                 
                 const db = request.server.plugins.sql.client;
-                const userId = 2;
-                const res = await db.textBoxes.getTextBoxes(userId);
+                const res = await db.textBoxes.getTextBoxes();
 
                 return res.recordset;
             }

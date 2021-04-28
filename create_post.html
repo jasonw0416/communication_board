@@ -107,7 +107,7 @@
 
     <button id="getQues" class="btn btn-info">Get Question</button>
 
-    <div class="question">
+    <div class="question" id="questionDisplay" style="display: none">
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2">
                 <div id="question1" class="panel panel-default blackborder">
@@ -132,7 +132,7 @@
     <button id="getAns" class="btn btn-info">Get Answer</button>
 
 
-    <div class="answer">
+    <div class="answer" id="answerDisplay" style="display: none">
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2">
                 <div id="answer1" class="panel panel-default blackborder">
@@ -246,16 +246,18 @@
     });*/
 
     $('#getQues').click(function () {
+        document.getElementById('questionDisplay').style.display = "";
         $.post("/api/textBoxes",
             {
                 addOrUpdate: 3, //0 is add, 1 is update, 2 is delete, 3 is get
-                textBoxId: $('#textBoxIdGet').val(),
+                textBoxId: 45,
                 userId: $('#userIdGet').val(),
             },
             function (data, status) {
                 console.log(data);
                 //quill3.setContents(JSON.parse(data.writtenText));
                 var id = "editor" + data.textBoxId;
+                console.log(id);
 
                 document.getElementById('question1').innerHTML += `<div class="panel-heading">
                         <h1 style="background-color:transparent">I HAVE A QUESTION</h1>
@@ -264,13 +266,15 @@
 
 
                 var id_for_quills = '#' + id;
+                console.log(id_for_quills);
                 quills[data.textBoxId] = new Quill(id_for_quills, {
                     modules: {
                         toolbar: false
                     },
                     theme: 'snow'
                 });
-
+                
+                quills[data.textBoxId].enable(false);
                 quills[data.textBoxId].setContents(JSON.parse(data.writtenText));
             });
 
@@ -302,15 +306,18 @@
     });*/
 
     $('#getAns').click(function () {
+        document.getElementById('answerDisplay').style.display = "";
         $.post("/api/textBoxes",
             {
                 addOrUpdate: 3, //0 is add, 1 is update, 2 is delete, 3 is get
-                textBoxId: $('#textBoxIdGet').val(),
+                textBoxId: 39,
                 userId: $('#userIdGet').val(),
             },
             function (data, status) {
                 console.log(data);
+
                 var id = "editor" + data.textBoxId;
+                console.log(id);
 
                 document.getElementById('answer1').innerHTML += `
                     <div class="panel-heading" >
@@ -321,6 +328,7 @@
 
 
                 var id_for_quills = '#' + id;
+                console.log(id_for_quills);
                 quills[data.textBoxId] = new Quill(id_for_quills, {
                     modules: {
                         toolbar: false
@@ -328,10 +336,26 @@
                     theme: 'snow'
                 });
 
+                quills[data.textBoxId].enable(false);
                 quills[data.textBoxId].setContents(JSON.parse(data.writtenText));
+                console.log(quills);
+                console.log(data.textBoxId);
             });
 
     });
+
+    function getDatabase () {
+        $.get("/api/textBoxes", 
+            function(data, status) {
+                alert(data);
+            }
+        
+        )
+    }
+
+    //console.log(getDatabase()); <- gets everything from database table textBox
+
+    
 
 </script>
 </html>

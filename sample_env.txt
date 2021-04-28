@@ -1,16 +1,16 @@
 NODE_ENV=development
 
 # hapi server config
-PORT=3000
+PORT=PORT
 HOST=localhost
-HOST_URL=https://localhost:3000
-COOKIE_ENCRYPT_PWD=awpomd123908zmc2AWpok12AWD321adsDZX#lkms#
+HOST_URL=https://localhost:PORT
+COOKIE_ENCRYPT_PWD= PASSWORD
 
 
 #sql server config
-SQL_USER=sa
-SQL_PASSWORD= P@55w0rd
-SQL_DATABASE=communicationBoard
+SQL_USER= USER_NAME
+SQL_PASSWORD= PASSWORD
+SQL_DATABASE= DATABASE
 SQL_SERVER=localhost
 SQL_ENCRYPT=false
 

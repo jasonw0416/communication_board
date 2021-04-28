@@ -112,7 +112,8 @@
                     <div class="panel-heading">
                         <h1 style="background-color:transparent">I HAVE A QUESTION</h1>
                     </div>
-                    <div class="panel-body">ABCD<br>
+                //INSERT QUESTION
+                    <!--<div class="panel-body">ABCD<br>
                         EFG<br>
                         HIJK<br>
                         LMN<br>
@@ -120,7 +121,7 @@
                         QRS<br>
                         TUV<br>
                         WX<br>
-                        YZ</div>
+                        YZ</div>-->
                 </div>
             </div>
         </div>
@@ -134,18 +135,9 @@
                         <h4 style="background-color:transparent">Answer 1</h4>
                         <p style="background-color:transparent">By Anonymous</p>
                     </div>
-                    <div class="panel-body">ABCD<br>
-                        EFG<br>
-                        HIJK<br>
-                        LMN<br>
-                        OP<br>
-                        QRS<br>
-                        TUV<br>
-                        WX<br>
-                        YZ
-                    </div>
+                    //INSERT ANSWER 1
                     <div class="panel-footer">
-                        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#comment1">Replies</button>
+                        <!--<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#comment1">Replies</button>
                         <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#reply1" onclick=>Comment</button>
                         <div id="comment1" class="collapse">
                             <div class="comment" style="margin-top: 10px; background-color:#F5F5F5;">
@@ -179,8 +171,7 @@
                             <div id="toolbar"></div>
                             <div id="editor"></div>
                             <button id="postText" class="btn btn-info">Post</button>
-                        </div>
-
+                        </div>-->
                     </div>
                 </div>
             </div>
@@ -193,18 +184,9 @@
                         <h4 style="background-color:transparent">Answer 2</h4>
                         <p style="background-color:transparent">By Anonymous</p>
                     </div>
-                    <div class="panel-body">ABCD<br>
-                        EFG<br>
-                        HIJK<br>
-                        LMN<br>
-                        OP<br>
-                        QRS<br>
-                        TUV<br>
-                        WX<br>
-                        YZ
-                    </div>
+                    //INSERT ANSWER 2
                     <div class="panel-footer">
-                        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#comment2">Replies</button>
+                        <!--<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#comment2">Replies</button>
                         <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#reply2" onclick=>Comment</button>
                         <div id="comment2" class="collapse">
                             <div class="comment" style="margin-top: 10px; background-color:#F5F5F5;">
@@ -238,7 +220,7 @@
                             <div id="toolbar2"></div>
                             <div id="editor2"></div>
                             <button id="postText2" class="btn btn-info">Post</button>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
             </div>
@@ -251,18 +233,9 @@
                         <h4 style="background-color:transparent">Answer 3</h4>
                         <p style="background-color:transparent">By Anonymous</p>
                     </div>
-                    <div class="panel-body">ABCD<br>
-                        EFG<br>
-                        HIJK<br>
-                        LMN<br>
-                        OP<br>
-                        QRS<br>
-                        TUV<br>
-                        WX<br>
-                        YZ
-                    </div>
+                    //INSERT ANSWER 3
                     <div class="panel-footer">
-                        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#comment">Replies</button>
+                        <!--<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#comment">Replies</button>
                         <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#reply3" onclick=>Comment</button>
                         <div id="comment" class="collapse">
                             <div class="comment" style="margin-top: 10px; background-color:#F5F5F5;">
@@ -296,16 +269,23 @@
                             <div id="toolbar3"></div>
                             <div id="editor3"></div>
                             <button id="postText3" class="btn btn-info">Post</button>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
             </div>
         </div>
+        <div class="col-sm-8 col-sm-offset-2">
+                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#reply" onclick=>Post Answer</button>
+                <div id="reply" class="collapse">
+                    <div id="toolbar"></div>
+                    <div id="editor"></div>
+                    <button id="postText" class="btn btn-info">Post</button>
+            </div>
+            <br>
+        </div>
     </div>
-
-
-
 </div>
+
 </body>
 
 <script>
@@ -326,28 +306,8 @@
         theme: 'snow'
     });
 
-    var quill2 = new Quill('#editor2', {
-        modules: {
-            toolbar: toolbarOptions
-        },
-        theme: 'snow'
-    });
-
-    var quill3 = new Quill('#editor3', {
-        modules: {
-            toolbar: toolbarOptions
-        },
-        theme: 'snow'
-    });
-
     $('#postText').click(function () {
         window.post = quill.getContents();
-    });
-    $('#postText2').click(function () {
-        window.post2 = quill2.getContents();
-    });
-    $('#postText3').click(function () {
-        window.post3 = quill3.getContents();
     });
 
 </script>
