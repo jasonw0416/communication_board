@@ -12,7 +12,7 @@ module.exports.register = async server => {
         method:"GET",
         path:"/",
         handler: async (request, h) => {
-            return h.file('./create_forum.html');
+            return h.file('./create_post.html');
         }
     });
 };

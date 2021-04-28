@@ -1,0 +1,81 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"0a3b787a-1dd3-4228-9ca2-2f855180ac26\" name=\"Default Changelist\" comment=\"\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"JavaScript File\" />\r\n        <option value=\"HTML File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1p8cap1eUNN9N8esUOSOnqQ2uli\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"DefaultHtmlFileTemplate\" value=\"HTML File\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"javascript.nodejs.core.library.configured.version\" value=\"14.15.0\" />\r\n    <property name=\"javascript.nodejs.core.library.typings.version\" value=\"14.14.35\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/../chemiqualancer\" />\r\n    <property name=\"nodejs_interpreter_path\" value=\"node\" />\r\n    <property name=\"nodejs_package_manager_path\" value=\"npm\" />\r\n    <property name=\"settings.editor.selected.configurable\" value=\"reference.settingsdialog.IDE.editor.colors\" />\r\n    <property name=\"vue.rearranger.settings.migration\" value=\"true\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"$PROJECT_DIR$/src\" />\r\n      <recent name=\"$PROJECT_DIR$\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"index.js\" type=\"NodeJSConfigurationType\" temporary=\"true\" nameIsGenerated=\"true\" path-to-js-file=\"$PROJECT_DIR$/src/index.js\" working-dir=\"$PROJECT_DIR$\">\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Node.js.index.js\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"SvnConfiguration\">\r\n    <configuration />\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"0a3b787a-1dd3-4228-9ca2-2f855180ac26\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1614568223992</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1614568223992</updated>\r\n      <workItem from=\"1614568225730\" duration=\"8438000\" />\r\n      <workItem from=\"1615754948669\" duration=\"5494000\" />\r\n      <workItem from=\"1615995026554\" duration=\"2479000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"WindowStateProjectService\">\r\n    <state x=\"3040\" y=\"221\" key=\"#com.intellij.execution.impl.EditConfigurationsDialog\" timestamp=\"1614568443335\">\r\n      <screen x=\"2048\" y=\"25\" width=\"2560\" height=\"1055\" />\r\n    </state>\r\n    <state x=\"3040\" y=\"221\" key=\"#com.intellij.execution.impl.EditConfigurationsDialog/2048.25.2560.1055/0.25.2048.1255@2048.25.2560.1055\" timestamp=\"1614568443335\" />\r\n    <state x=\"3318\" y=\"369\" key=\"#com.intellij.fileTypes.FileTypeChooser\" timestamp=\"1614570177713\">\r\n      <screen x=\"2048\" y=\"25\" width=\"2560\" height=\"1055\" />\r\n    </state>\r\n    <state x=\"3318\" y=\"369\" key=\"#com.intellij.fileTypes.FileTypeChooser/2048.25.2560.1055/0.25.2048.1255@2048.25.2560.1055\" timestamp=\"1614570177713\" />\r\n    <state x=\"819\" y=\"274\" key=\"FileChooserDialogImpl\" timestamp=\"1616024090861\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state x=\"819\" y=\"274\" key=\"FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1616024090861\" />\r\n    <state width=\"1705\" height=\"290\" key=\"GridCell.Tab.0.bottom\" timestamp=\"1614580370237\">\r\n      <screen x=\"2048\" y=\"25\" width=\"2560\" height=\"1055\" />\r\n    </state>\r\n    <state width=\"1705\" height=\"290\" key=\"GridCell.Tab.0.bottom/2048.25.2560.1055/0.25.2048.1255@2048.25.2560.1055\" timestamp=\"1614580370237\" />\r\n    <state width=\"1705\" height=\"290\" key=\"GridCell.Tab.0.center\" timestamp=\"1614580370236\">\r\n      <screen x=\"2048\" y=\"25\" width=\"2560\" height=\"1055\" />\r\n    </state>\r\n    <state width=\"1705\" height=\"290\" key=\"GridCell.Tab.0.center/2048.25.2560.1055/0.25.2048.1255@2048.25.2560.1055\" timestamp=\"1614580370236\" />\r\n    <state width=\"1705\" height=\"290\" key=\"GridCell.Tab.0.left\" timestamp=\"1614580370236\">\r\n      <screen x=\"2048\" y=\"25\" width=\"2560\" height=\"1055\" />\r\n    </state>\r\n    <state width=\"1705\" height=\"290\" key=\"GridCell.Tab.0.left/2048.25.2560.1055/0.25.2048.1255@2048.25.2560.1055\" timestamp=\"1614580370236\" />\r\n    <state width=\"1705\" height=\"290\" key=\"GridCell.Tab.0.right\" timestamp=\"1614580370236\">\r\n      <screen x=\"2048\" y=\"25\" width=\"2560\" height=\"1055\" />\r\n    </state>\r\n    <state width=\"1705\" height=\"290\" key=\"GridCell.Tab.0.right/2048.25.2560.1055/0.25.2048.1255@2048.25.2560.1055\" timestamp=\"1614580370236\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/workspace.xml	(revision 7a85b45515202c95c229ed9e4fffb4a23a0e4be9)
++++ .idea/workspace.xml	(date 1618542822112)
+@@ -1,7 +1,32 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
++  <component name="BranchesTreeState">
++    <expand>
++      <path>
++        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
++        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
++      </path>
++      <path>
++        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
++        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
++      </path>
++      <path>
++        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
++        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
++        <item name="GROUP_NODE:heroku" type="e8cecc67:BranchNodeDescriptor" />
++      </path>
++      <path>
++        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
++        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
++        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
++      </path>
++    </expand>
++    <select />
++  </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="0a3b787a-1dd3-4228-9ca2-2f855180ac26" name="Default Changelist" comment="" />
++    <list default="true" id="0a3b787a-1dd3-4228-9ca2-2f855180ac26" name="Default Changelist" comment="">
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -66,11 +91,26 @@
+       <workItem from="1614568225730" duration="8438000" />
+       <workItem from="1615754948669" duration="5494000" />
+       <workItem from="1615995026554" duration="2479000" />
++      <workItem from="1616080248469" duration="890000" />
++      <workItem from="1618499745377" duration="1257000" />
++      <workItem from="1618541775270" duration="1038000" />
+     </task>
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+     <option name="version" value="3" />
++  </component>
++  <component name="Vcs.Log.Tabs.Properties">
++    <option name="TAB_STATES">
++      <map>
++        <entry key="MAIN">
++          <value>
++            <State />
++          </value>
++        </entry>
++      </map>
++    </option>
++    <option name="oldMeFiltersMigrated" value="true" />
+   </component>
+   <component name="WindowStateProjectService">
+     <state x="3040" y="221" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1614568443335">
+@@ -101,5 +141,9 @@
+       <screen x="2048" y="25" width="2560" height="1055" />
+     </state>
+     <state width="1705" height="290" key="GridCell.Tab.0.right/2048.25.2560.1055/0.25.2048.1255@2048.25.2560.1055" timestamp="1614580370236" />
++    <state x="854" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1618499864912">
++      <screen x="0" y="0" width="1920" height="1040" />
++    </state>
++    <state x="854" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1618499864912" />
+   </component>
+ </project>
+\ No newline at end of file
