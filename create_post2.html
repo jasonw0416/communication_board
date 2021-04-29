@@ -134,9 +134,9 @@
 
     <div class="answer" id="answerDisplay" style="display: none">
         <div class="row">
-            <div class="col-sm-8 col-sm-offset-2">
-                <div id="answer1" class="panel panel-default blackborder">
-                    <!--<div class="panel-heading" >
+            <div id="answer1" class="col-sm-8 col-sm-offset-2">
+            <!--<div class="panel panel-default blackborder">
+                    <div class="panel-heading" >
                         <h4 style="background-color:transparent">Answer 1</h4>
                         <p style="background-color:transparent">By Anonymous</p>
                     </div>
@@ -187,8 +187,8 @@
                             <button id="postText" class="btn btn-info">Post</button>
                         </div>
 
-                    </div>-->
-                </div>
+                    </div>
+                </div>-->
             </div>
         </div>
     </div>
@@ -209,7 +209,154 @@
         ['link', 'image', 'video', 'formula'],
         [{'color' : []}, {'background' : []}]];
 
-    var data2d = getDatabase();
+    //var data2d = getDatabase();
+    var data2d = [
+        [
+            {
+                "textBoxId": 1,
+                "categoryId": 1,
+                "userId": 1,
+                "writtenText": "{\"ops\":[{\"insert\":\"Wonjun likes cookie run\\n\"}]}",
+                "boxPrevious": null,
+                "boxNext": 2
+            },
+            {
+                "textBoxId": 2,
+                "categoryId": 1,
+                "userId": 1,
+                "writtenText": "{\"ops\":[{\"insert\":\"Why does wonjun like cookie run?\\n\"}]}",
+                "boxPrevious": 1,
+                "boxNext": 3
+            },
+            {
+                "textBoxId": 3,
+                "categoryId": 1,
+                "userId": 1,
+                "writtenText": "{\"ops\":[{\"insert\":\"yes why does wonjun addicted to cookie run\\n\"}]}",
+                "boxPrevious": 2,
+                "boxNext": 4
+            },
+            {
+                "textBoxId": 4,
+                "categoryId": 1,
+                "userId": 1,
+                "writtenText": "{\"ops\":[{\"insert\":\"is it because he likes cookies or something else?\\n\"}]}",
+                "boxPrevious": 3,
+                "boxNext": null
+            }
+        ],
+        [
+            {
+                "textBoxId": 5,
+                "categoryId": 2,
+                "userId": 1,
+                "writtenText": "{\"ops\":[{\"insert\":\"What do you guys want to do when you grow up\\n\"}]}",
+                "boxPrevious": null,
+                "boxNext": 6
+            },
+            {
+                "textBoxId": 6,
+                "categoryId": 2,
+                "userId": 1,
+                "writtenText": "{\"ops\":[{\"insert\":\"I want to become a computer programmer\\n\"}]}",
+                "boxPrevious": 5,
+                "boxNext": 7
+            },
+            {
+                "textBoxId": 7,
+                "categoryId": 2,
+                "userId": 1,
+                "writtenText": "{\"ops\":[{\"insert\":\"I want to become an architect\\n\"}]}",
+                "boxPrevious": 6,
+                "boxNext": 8
+            },
+            {
+                "textBoxId": 8,
+                "categoryId": 2,
+                "userId": 1,
+                "writtenText": "{\"ops\":[{\"insert\":\"I want to become a nurse\\n\"}]}",
+                "boxPrevious": 7,
+                "boxNext": 9
+            },
+            {
+                "textBoxId": 9,
+                "categoryId": 2,
+                "userId": 1,
+                "writtenText": "{\"ops\":[{\"insert\":\"I want to become a pastor\\n\"}]}",
+                "boxPrevious": 8,
+                "boxNext": null
+            }
+        ],
+        [
+            {
+                "textBoxId": 10,
+                "categoryId": 3,
+                "userId": 1,
+                "writtenText": "{\"ops\":[{\"insert\":\"What animals do you like\\n\"}]}",
+                "boxPrevious": null,
+                "boxNext": 11
+            },
+            {
+                "textBoxId": 11,
+                "categoryId": 3,
+                "userId": 1,
+                "writtenText": "{\"ops\":[{\"insert\":\"I like dogs\\n\"}]}",
+                "boxPrevious": 10,
+                "boxNext": 12
+            },
+            {
+                "textBoxId": 12,
+                "categoryId": 3,
+                "userId": 1,
+                "writtenText": "{\"ops\":[{\"insert\":\"I like cats\\n\"}]}",
+                "boxPrevious": 11,
+                "boxNext": 13
+            },
+            {
+                "textBoxId": 13,
+                "categoryId": 3,
+                "userId": 1,
+                "writtenText": "{\"ops\":[{\"insert\":\"I like pandas\\n\"}]}",
+                "boxPrevious": 12,
+                "boxNext": 14
+            },
+            {
+                "textBoxId": 14,
+                "categoryId": 3,
+                "userId": 1,
+                "writtenText": "{\"ops\":[{\"insert\":\"I like cave spiders\\n\"}]}",
+                "boxPrevious": 13,
+                "boxNext": null
+            }
+        ],
+        [
+            {
+                "textBoxId": 15,
+                "categoryId": 4,
+                "userId": 1,
+                "writtenText": "{\"ops\":[{\"insert\":\"What do you like to do in your freetime?\\n\"}]}",
+                "boxPrevious": null,
+                "boxNext": 16
+            },
+            {
+                "textBoxId": 16,
+                "categoryId": 4,
+                "userId": 1,
+                "writtenText": "{\"ops\":[{\"insert\":\"I like to cook\\n\"}]}",
+                "boxPrevious": 15,
+                "boxNext": 17
+            },
+            {
+                "textBoxId": 17,
+                "categoryId": 4,
+                "userId": 1,
+                "writtenText": "{\"ops\":[{\"insert\":\"I like to play games\\n\"}]}",
+                "boxPrevious": 16,
+                "boxNext": null
+            }
+        ]
+    ];
+    console.log(data2d);
 
 
     var quills = {};
@@ -219,12 +366,14 @@
     });
     $('#getQues').click(function () {
         document.getElementById('questionDisplay').style.display = "";
-        data = {textBoxId: 1, writtenText: "{\"ops\":[{\"insert\":\"wdadawdawd\\n\"}]}"};
+        data = data2d[0][0];
+        //data = {textBoxId: 2, writtenText: "{\"ops\":[{\"insert\":\"HI\\n\"}]}"};
         console.log(data);
         //quill3.setContents(JSON.parse(data.writtenText));
         var id = "editor" + data.textBoxId;
 
-        document.getElementById('question1').innerHTML += `<div class="panel-heading">
+        document.getElementById('question1').innerHTML += `
+                    <div class="panel-heading">
                         <h1 style="background-color:transparent">I HAVE A QUESTION</h1>
                     </div>
                     <div class="panel-body" id=`+ id + `>` + `</div>`;
@@ -283,27 +432,30 @@
 
     $('#getAns').click(function () {
         document.getElementById('answerDisplay').style.display = "";
-        data = {textBoxId: 2, writtenText: "{\"ops\":[{\"insert\":\"HI\\n\"}]}"};
-        var id = "editor" + data.textBoxId;
+        for (let i = 1; i < data2d[0].length; i++){
+            data = data2d[0][i];
+            var id = "editor" + data.textBoxId;
 
-        document.getElementById('answer1').innerHTML += `
+            document.getElementById('answer1').innerHTML += `
+                <div class="panel panel-default blackborder">
                     <div class="panel-heading" >
                         <h4 style="background-color:transparent">Answer 1</h4>
                         <p style="background-color:transparent">By Anonymous</p>
                     </div>
-                    <div class="panel-body" id=`+ id + `>` + `</div>`;
+                    <div class="panel-body" id=`+ id + `>` + `</div></div>`;
 
 
-        var id_for_quills = '#' + id;
-        quills[data.textBoxId] = new Quill(id_for_quills, {
-            modules: {
-                toolbar: false
-            },
-            theme: 'snow'
-        });
+            var id_for_quills = '#' + id;
+            quills[data.textBoxId] = new Quill(id_for_quills, {
+                modules: {
+                    toolbar: false
+                },
+                theme: 'snow'
+            });
 
-        quills[data.textBoxId].enable(false);
-        quills[data.textBoxId].setContents(JSON.parse(data.writtenText));
+            quills[data.textBoxId].enable(false);
+            quills[data.textBoxId].setContents(JSON.parse(data.writtenText));
+        }
 
     });
 
