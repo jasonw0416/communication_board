@@ -209,8 +209,8 @@
         ['link', 'image', 'video', 'formula'],
         [{'color' : []}, {'background' : []}]];
 
-    //var data2d = getDatabase();
-    var data2d = [
+    var data2d = getDatabase();
+    /*var data2d = [
         [
             {
                 "textBoxId": 1,
@@ -355,7 +355,7 @@
                 "boxNext": null
             }
         ]
-    ];
+    ];*/
     console.log(data2d);
 
 
@@ -364,6 +364,34 @@
     $('#postText').click(function () {
         window.post = quill.getContents();
     });
+    /*$('#getQues').click(function () {
+        document.getElementById('questionDisplay').style.display = "";
+        data = data2d[0][0];
+        //data = {textBoxId: 2, writtenText: "{\"ops\":[{\"insert\":\"HI\\n\"}]}"};
+        console.log(data);
+        //quill3.setContents(JSON.parse(data.writtenText));
+        var id = "editor" + data.textBoxId;
+
+        document.getElementById('question1').innerHTML += `
+                    <div class="panel-heading">
+                        <h1 style="background-color:transparent">I HAVE A QUESTION</h1>
+                    </div>
+                    <div class="panel-body" id=`+ id + `>` + `</div>`;
+
+
+        var id_for_quills = '#' + id;
+        quills[data.textBoxId] = new Quill(id_for_quills, {
+            modules: {
+                toolbar: false
+            },
+            theme: 'snow'
+        });
+
+        quills[data.textBoxId].enable(false);
+        quills[data.textBoxId].setContents(JSON.parse(data.writtenText));
+
+    });*/
+
     $('#getQues').click(function () {
         document.getElementById('questionDisplay').style.display = "";
         data = data2d[0][0];
@@ -392,43 +420,35 @@
 
     });
 
-    /*$('#getQues').click(function () {
-        document.getElementById('questionDisplay').style.display = "";
-        $.post("/api/textBoxes",
-            {
-                addOrUpdate: 3, //0 is add, 1 is update, 2 is delete, 3 is get
-                textBoxId: 45,
-                // textBoxId: $('#textBoxIdGet').val(),
-                userId: $('#userIdGet').val(),
-            },
-            function (data, status) {
-                //data = {textBoxId: 1, writtenText: "{\"ops\":[{\"insert\":\"wdadawdawd\\n\"}]}"};
-                console.log(data);
-                //quill3.setContents(JSON.parse(data.writtenText));
-                var id = "editor" + data.textBoxId;
-                //console.log(id);
 
-                document.getElementById('question1').innerHTML += `<div class="panel-heading">
-                        <h1 style="background-color:transparent">I HAVE A QUESTION</h1>
+    /*$('#getAns').click(function () {
+        document.getElementById('answerDisplay').style.display = "";
+        for (let i = 1; i < data2d[0].length; i++){
+            data = data2d[0][i];
+            var id = "editor" + data.textBoxId;
+
+            document.getElementById('answer1').innerHTML += `
+                <div class="panel panel-default blackborder">
+                    <div class="panel-heading" >
+                        <h4 style="background-color:transparent">Answer 1</h4>
+                        <p style="background-color:transparent">By Anonymous</p>
                     </div>
-                    <div class="panel-body" id=`+ id + `>` + `</div>`;
+                    <div class="panel-body" id=`+ id + `>` + `</div></div>`;
 
 
-                var id_for_quills = '#' + id;
-                //console.log(id_for_quills);
-                quills[data.textBoxId] = new Quill(id_for_quills, {
-                    modules: {
-                        toolbar: false
-                    },
-                    theme: 'snow'
-                });
-
-                quills[data.textBoxId].enable(false);
-                quills[data.textBoxId].setContents(JSON.parse(data.writtenText));
+            var id_for_quills = '#' + id;
+            quills[data.textBoxId] = new Quill(id_for_quills, {
+                modules: {
+                    toolbar: false
+                },
+                theme: 'snow'
             });
 
-    });*/
+            quills[data.textBoxId].enable(false);
+            quills[data.textBoxId].setContents(JSON.parse(data.writtenText));
+        }
 
+    });*/
 
     $('#getAns').click(function () {
         document.getElementById('answerDisplay').style.display = "";
@@ -458,47 +478,6 @@
         }
 
     });
-
-    /*$('#getAns').click(function () {
-        document.getElementById('answerDisplay').style.display = "";
-        $.post("/api/textBoxes",
-            {
-                addOrUpdate: 3, //0 is add, 1 is update, 2 is delete, 3 is get
-                //textBoxId: $('#textBoxIdGet').val(),
-                textBoxId: 39,
-                userId: $('#userIdGet').val(),
-            },
-            function (data, status) {
-                //data = {textBoxId: 2, writtenText: "{\"ops\":[{\"insert\":\"HI\\n\"}]}"};
-                console.log(data);
-
-                var id = "editor" + data.textBoxId;
-                //console.log(id);
-
-                document.getElementById('answer1').innerHTML += `
-                    <div class="panel-heading" >
-                        <h4 style="background-color:transparent">Answer 1</h4>
-                        <p style="background-color:transparent">By Anonymous</p>
-                    </div>
-                    <div class="panel-body" id=`+ id + `>` + `</div>`;
-
-
-                var id_for_quills = '#' + id;
-                //console.log(id_for_quills);
-                quills[data.textBoxId] = new Quill(id_for_quills, {
-                    modules: {
-                        toolbar: false
-                    },
-                    theme: 'snow'
-                });
-
-                quills[data.textBoxId].enable(false);
-                quills[data.textBoxId].setContents(JSON.parse(data.writtenText));
-                //console.log(quills);
-                //console.log(data.textBoxId);
-            });
-
-    });*/
 
     function getDatabase () {
         $.get("/api/textBoxes",
