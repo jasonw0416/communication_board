@@ -65,7 +65,7 @@
                 <a class="nav-link active" href="/home.html/">Home <span class="sr-only"></span></a>
                 <a class="nav-link active" href="/forum.html/">Forum <span class="sr-only"></span></a>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" style="color:black" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" style="color:black; id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Chapters
                     </a>
                     <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -82,7 +82,7 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" style="color:black" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" style="color:black; id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Topics
                     </a>
                     <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -102,10 +102,10 @@
 </div>
 <br>
 
-<div class="row">
+<!--<div class="row">
     <input class="form-control" id="name" placeholder="Name (Optional)">
 </div>
-<br><br>
+<br><br>-->
 
 <h2>Question:</h2>
 
@@ -120,7 +120,22 @@
         <button id="postText" class="btn btn-info">Post</button>
     </div>
     <div class="col-sm-4">
-        <input type="text" id="categoryIdPost" value="categoryId"><br><br>
+        <div class="dropdown">
+            <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                Select Category
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#">Acids and Bases</a></li>
+                <li><a class="dropdown-item" href="#">Molecules and Compounds</a></li>
+                <li><a class="dropdown-item" href="#">Chemical Reactions</a></li>
+                <li><a class="dropdown-item" href="#">Thermochemistry</a></li>
+                <li><a class="dropdown-item" href="#">Periodic Table</a></li>
+                <li><a class="dropdown-item" href="#">Chemical Bonding</a></li>
+                <li><a class="dropdown-item" href="#">Matter and States</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Other</a></li>
+            </ul>
+        </div>
     </div>
     <div class="col-sm-4">
         <input type="text" id="userIdPost" value="userId"><br><br>
@@ -186,6 +201,15 @@
 </body>
 
 <script>
+    $( document ).ready(function() {
+        $('.dropdown').each(function (key, dropdown) {
+            var $dropdown = $(dropdown);
+            $dropdown.find('.dropdown-menu a').on('click', function () {
+                $dropdown.find('button').text($(this).text()).append(' <span class="caret"></span>');
+            });
+        });
+    });
+
     var toolbarOptions = [['bold', 'italic', 'underline', 'strike'],
         ['blockquote', 'code-block'],
         [{'list' : 'ordered'}, {'list' : 'bullet'}],
@@ -270,7 +294,7 @@
         
     }); 
     $('#getText').click(function () {
-        $.post("/api/textBoxes",
+        $.post("/api/textBoxes", 
         {
             addOrUpdate: 3, //0 is add, 1 is update, 2 is delete, 3 is get
             textBoxId: $('#textBoxIdGet').val(),
@@ -282,72 +306,11 @@
         });
         
         
-    }/*,
-    function(){
-        document.body.innerHTML += `
-        <div class="row">
-            <div class="col-sm-8 col-sm-offset-2">
-                <div class="panel panel-default blackborder">
-                    <div class="panel-heading" >
-                        <h4 style="background-color:transparent">Answer 2</h4>
-                        <p style="background-color:transparent">By Anonymous</p>
-                    </div>
-                    <div class="panel-body">ABCD<br>
-                        EFG<br>
-                        HIJK<br>
-                        LMN<br>
-                        OP<br>
-                        QRS<br>
-                        TUV<br>
-                        WX<br>
-                        YZ
-                    </div>
-                    <div class="panel-footer">
-                        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#comment2">Replies</button>
-                        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#reply2" onclick=>Comment</button>
-                        <div id="comment2" class="collapse">
-                            <div class="comment" style="margin-top: 10px; background-color:#F5F5F5;">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <p style="background-color:transparent">Anonymous A</p>
-                                    </div>
-                                    <div class="panel-body">
-                                        I don't get it.
-                                    </div>
-                                </div>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <p style="background-color:transparent">Anonymous B</p>
-                                    </div>
-                                    <div class="panel-body">
-                                        What?
-                                    </div>
-                                </div>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <p style="background-color:transparent">Anonymous C</p>
-                                    </div>
-                                    <div class="panel-body">
-                                        Great Answer! Thanks!
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="reply2" class="collapse">
-                            <div id="toolbar2"></div>
-                            <div id="editor2"></div>
-                            <button id="postText2" class="btn btn-info">Post</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>`
-    }*/);
+    }); 
 
 
 
-//.boxPrevious : id of previous box
-// data.boxPrevious === null
+
 
 </script>
 
