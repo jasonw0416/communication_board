@@ -250,10 +250,13 @@
 
     });*/
 
+    var questionId = parseInt(window.location.hash.substring(1));
+
+
     $('#getQues').click(function () {
         document.getElementById('questionDisplay').style.display = "";
 
-        data = data2d[0][0];
+        data = data2d[questionId][0];
 
         //data = {textBoxId: 2, writtenText: "{\"ops\":[{\"insert\":\"HI\\n\"}]}"};
         console.log(data);
