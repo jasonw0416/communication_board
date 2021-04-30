@@ -70,6 +70,7 @@
                 <a class="nav-link active" href="/">Home <span class="sr-only"></span></a>
                 <a class="nav-link active" href="/create_post2.html">Post <span class="sr-only"></span></a>
                 <a class="nav-link active" href="/create_forum.html">Forum <span class="sr-only"></span></a>
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" style="color:black" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
                         Chapters
@@ -210,10 +211,17 @@
         ['link', 'image', 'video', 'formula'],
         [{'color' : []}, {'background' : []}]];
 
+<<<<<<< HEAD
 
     var data2d = getDatabase();
 
     /*var data2d = [
+=======
+/*
+    var data2d = getDatabase();
+*/
+    var data2d = [
+>>>>>>> 219994fd756c2edd6d4c4ed847f750810cde213e
         [
             {
                 "textBoxId": 1,
@@ -358,7 +366,11 @@
                 "boxNext": null
             }
         ]
+<<<<<<< HEAD
     ];*/
+=======
+    ];
+>>>>>>> 219994fd756c2edd6d4c4ed847f750810cde213e
     console.log(data2d);
 
 
@@ -397,7 +409,11 @@
 
     $('#getQues').click(function () {
         document.getElementById('questionDisplay').style.display = "";
+<<<<<<< HEAD
         data = data2d[1][0];
+=======
+        data = data2d[0][0];
+>>>>>>> 219994fd756c2edd6d4c4ed847f750810cde213e
         //data = {textBoxId: 2, writtenText: "{\"ops\":[{\"insert\":\"HI\\n\"}]}"};
         console.log(data);
         //quill3.setContents(JSON.parse(data.writtenText));
@@ -455,8 +471,13 @@
 
     $('#getAns').click(function () {
         document.getElementById('answerDisplay').style.display = "";
+<<<<<<< HEAD
         for (let i = 1; i < data2d[1].length; i++){
             data = data2d[1][i];
+=======
+        for (let i = 1; i < data2d[0].length; i++){
+            data = data2d[0][i];
+>>>>>>> 219994fd756c2edd6d4c4ed847f750810cde213e
             var id = "editor" + data.textBoxId;
 
             document.getElementById('answer1').innerHTML += `
@@ -483,6 +504,7 @@
     });
 
     function getDatabase () {
+<<<<<<< HEAD
         var ret = [];
         $.ajax({
         url: "/api/textBoxes",
@@ -550,6 +572,16 @@
 
     console.log(getDatabase());
 
+=======
+        $.get("/api/textBoxes",
+            function(data, status) {
+                alert(data);
+            }
+
+        )
+    }
+
+>>>>>>> 219994fd756c2edd6d4c4ed847f750810cde213e
     //console.log(getDatabase()); <- gets everything from database table textBox
 
 

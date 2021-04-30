@@ -197,10 +197,17 @@
         ['link', 'image', 'video', 'formula'],
         [{'color' : []}, {'background' : []}]];
 
+<<<<<<< HEAD
 
     var data2d = getDatabase();
 
     /*var data2d = [
+=======
+/*
+    var data2d = getDatabase();
+*/
+    var data2d = [
+>>>>>>> 219994fd756c2edd6d4c4ed847f750810cde213e
         [
             {
                 "textBoxId": 1,
@@ -345,7 +352,11 @@
                 "boxNext": null
             }
         ]
+<<<<<<< HEAD
     ];*/
+=======
+    ];
+>>>>>>> 219994fd756c2edd6d4c4ed847f750810cde213e
 
     console.log(data2d);
 
@@ -375,6 +386,7 @@
     });
 
     function getDatabase () {
+<<<<<<< HEAD
         var ret = [];
         $.ajax({
         url: "/api/textBoxes",
@@ -441,5 +453,14 @@
    
 
     console.log(getDatabase());
+=======
+        $.get("/api/textBoxes",
+            function(data, status) {
+                alert(data);
+            }
+
+        )
+    }
+>>>>>>> 219994fd756c2edd6d4c4ed847f750810cde213e
 </script>
 </html>
