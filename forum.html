@@ -197,166 +197,9 @@
         ['link', 'image', 'video', 'formula'],
         [{'color' : []}, {'background' : []}]];
 
-<<<<<<< HEAD
 
     var data2d = getDatabase();
 
-    /*var data2d = [
-=======
-/*
-    var data2d = getDatabase();
-*/
-    var data2d = [
->>>>>>> 219994fd756c2edd6d4c4ed847f750810cde213e
-        [
-            {
-                "textBoxId": 1,
-                "categoryId": 1,
-                "userId": 1,
-                "writtenText": "{\"ops\":[{\"insert\":\"Wonjun likes cookie run\\n\"}]}",
-                "boxPrevious": null,
-                "boxNext": 2
-            },
-            {
-                "textBoxId": 2,
-                "categoryId": 1,
-                "userId": 1,
-                "writtenText": "{\"ops\":[{\"insert\":\"Why does wonjun like cookie run?\\n\"}]}",
-                "boxPrevious": 1,
-                "boxNext": 3
-            },
-            {
-                "textBoxId": 3,
-                "categoryId": 1,
-                "userId": 1,
-                "writtenText": "{\"ops\":[{\"insert\":\"yes why does wonjun addicted to cookie run\\n\"}]}",
-                "boxPrevious": 2,
-                "boxNext": 4
-            },
-            {
-                "textBoxId": 4,
-                "categoryId": 1,
-                "userId": 1,
-                "writtenText": "{\"ops\":[{\"insert\":\"is it because he likes cookies or something else?\\n\"}]}",
-                "boxPrevious": 3,
-                "boxNext": null
-            }
-        ],
-        [
-            {
-                "textBoxId": 5,
-                "categoryId": 2,
-                "userId": 1,
-                "writtenText": "{\"ops\":[{\"insert\":\"What do you guys want to do when you grow up\\n\"}]}",
-                "boxPrevious": null,
-                "boxNext": 6
-            },
-            {
-                "textBoxId": 6,
-                "categoryId": 2,
-                "userId": 1,
-                "writtenText": "{\"ops\":[{\"insert\":\"I want to become a computer programmer\\n\"}]}",
-                "boxPrevious": 5,
-                "boxNext": 7
-            },
-            {
-                "textBoxId": 7,
-                "categoryId": 2,
-                "userId": 1,
-                "writtenText": "{\"ops\":[{\"insert\":\"I want to become an architect\\n\"}]}",
-                "boxPrevious": 6,
-                "boxNext": 8
-            },
-            {
-                "textBoxId": 8,
-                "categoryId": 2,
-                "userId": 1,
-                "writtenText": "{\"ops\":[{\"insert\":\"I want to become a nurse\\n\"}]}",
-                "boxPrevious": 7,
-                "boxNext": 9
-            },
-            {
-                "textBoxId": 9,
-                "categoryId": 2,
-                "userId": 1,
-                "writtenText": "{\"ops\":[{\"insert\":\"I want to become a pastor\\n\"}]}",
-                "boxPrevious": 8,
-                "boxNext": null
-            }
-        ],
-        [
-            {
-                "textBoxId": 10,
-                "categoryId": 3,
-                "userId": 1,
-                "writtenText": "{\"ops\":[{\"insert\":\"What animals do you like\\n\"}]}",
-                "boxPrevious": null,
-                "boxNext": 11
-            },
-            {
-                "textBoxId": 11,
-                "categoryId": 3,
-                "userId": 1,
-                "writtenText": "{\"ops\":[{\"insert\":\"I like dogs\\n\"}]}",
-                "boxPrevious": 10,
-                "boxNext": 12
-            },
-            {
-                "textBoxId": 12,
-                "categoryId": 3,
-                "userId": 1,
-                "writtenText": "{\"ops\":[{\"insert\":\"I like cats\\n\"}]}",
-                "boxPrevious": 11,
-                "boxNext": 13
-            },
-            {
-                "textBoxId": 13,
-                "categoryId": 3,
-                "userId": 1,
-                "writtenText": "{\"ops\":[{\"insert\":\"I like pandas\\n\"}]}",
-                "boxPrevious": 12,
-                "boxNext": 14
-            },
-            {
-                "textBoxId": 14,
-                "categoryId": 3,
-                "userId": 1,
-                "writtenText": "{\"ops\":[{\"insert\":\"I like cave spiders\\n\"}]}",
-                "boxPrevious": 13,
-                "boxNext": null
-            }
-        ],
-        [
-            {
-                "textBoxId": 15,
-                "categoryId": 4,
-                "userId": 1,
-                "writtenText": "{\"ops\":[{\"insert\":\"What do you like to do in your freetime?\\n\"}]}",
-                "boxPrevious": null,
-                "boxNext": 16
-            },
-            {
-                "textBoxId": 16,
-                "categoryId": 4,
-                "userId": 1,
-                "writtenText": "{\"ops\":[{\"insert\":\"I like to cook\\n\"}]}",
-                "boxPrevious": 15,
-                "boxNext": 17
-            },
-            {
-                "textBoxId": 17,
-                "categoryId": 4,
-                "userId": 1,
-                "writtenText": "{\"ops\":[{\"insert\":\"I like to play games\\n\"}]}",
-                "boxPrevious": 16,
-                "boxNext": null
-            }
-        ]
-<<<<<<< HEAD
-    ];*/
-=======
-    ];
->>>>>>> 219994fd756c2edd6d4c4ed847f750810cde213e
 
     console.log(data2d);
 
@@ -386,7 +229,6 @@
     });
 
     function getDatabase () {
-<<<<<<< HEAD
         var ret = [];
         $.ajax({
         url: "/api/textBoxes",
@@ -450,17 +292,5 @@
         return ret;
     }
 
-   
-
-    console.log(getDatabase());
-=======
-        $.get("/api/textBoxes",
-            function(data, status) {
-                alert(data);
-            }
-
-        )
-    }
->>>>>>> 219994fd756c2edd6d4c4ed847f750810cde213e
 </script>
 </html>
