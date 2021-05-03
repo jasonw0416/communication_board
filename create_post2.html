@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Chemiqualancer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="./public/css/main.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
     <script src="https://cdn.quilljs.com/1.3.7/quill.js"></script>
@@ -95,6 +95,15 @@
     <div class="col-sm-3"></div>
 
 </div>
+<div class="col-sm-8 col-sm-offset-2">
+    <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#reply" onclick=>Post Answer</button>
+    <div id="reply" class="collapse">
+        <div id="toolbar"></div>
+        <div id="editor"></div>
+        <button id="postText" class="btn btn-primary">Post</button>
+    </div>
+    <br>
+</div>
 
 
 
@@ -113,6 +122,17 @@
         ['link', 'image', 'video', 'formula'],
         [{'color' : []}, {'background' : []}]];
 
+    var quill = new Quill('#editor', {
+        modules: {
+            toolbar: toolbarOptions
+        },
+        theme: 'snow'
+    });
+
+    $('#postText').click(function () {
+        window.post = quill.getContents();
+    });
+
     var data2d = getDatabase();
 
     
@@ -120,11 +140,6 @@
 
 
     var quills = {};
-
-    $('#postText').click(function () {
-        window.post = quill.getContents();
-    });
-
 
     var questionId = parseInt(window.location.hash.substring(1));
 
