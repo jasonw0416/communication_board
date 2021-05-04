@@ -215,7 +215,7 @@
     $('#postText').click(function () {
         window.post = quill.getContents();
         lastBox = data2d[questionId][data2d[questionId].length - 1];
-        newBoxId = getLastID() + 1; //need to reset getLastID
+        newBoxId = lastBox.textBoxId + 1;
 
         $.post("/api/textBoxes",
             {

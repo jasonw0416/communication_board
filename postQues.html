@@ -137,12 +137,11 @@
 
     $('#postText').click(function () {
         window.post = quill.getContents();
-        newBoxId = getLastID() + 1;
 
         $.post("/api/textBoxes",
             {
                 addOrUpdate: 0, //0 is add, 1 is update, 2 is delete, 3 is get
-                categoryId: newBoxId,
+                categoryId: -1,
                 userId: 1,
                 writtenText: JSON.stringify(window.post),
                 boxPrevious: undefined,
@@ -154,21 +153,6 @@
 
         data2d = getDatabase();
     });
-
-    function getLastID () {
-        max = 0;
-
-
-        for (let i = 0; i < data2d.length; i++){
-            for (let j = 0; j < data2d[i].length; j++){
-                if (data2d[i][j].textBoxId > max){
-                    max = data2d[i][j].textBoxId;
-                }
-            }
-        }
-
-        return max;
-    }
 
 
     function getDatabase () {
