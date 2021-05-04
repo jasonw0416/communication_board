@@ -104,6 +104,7 @@
 
 </div>
 
+<!--
 <h2>Update</h2>
 
 <div class="row" style="margin-top: 10px; background-color:#F5F5F5;">
@@ -129,7 +130,7 @@
 <h2>Delete</h2>
 
 <div class="row">
-    
+
     <div class="col-sm-4">
         <button id="deleteText" class="btn btn-info">Delete</button>
     </div>
@@ -158,6 +159,7 @@
         <input type="text" id="userIdGet" value="userId"><br><br>
     </div>
 </div>
+-->
 
 </body>
 
@@ -189,7 +191,7 @@
         theme: 'snow'
     });
 
-    var quill2 = new Quill('#editor2', {
+/*    var quill2 = new Quill('#editor2', {
         modules: {
             toolbar: toolbarOptions
         },
@@ -203,7 +205,7 @@
         },
 
         theme: 'snow'
-    });
+    });*/
 
     
 
@@ -216,19 +218,20 @@
             categoryId: $('#categoryIdPost').val(),
             userId: 1,
             writtenText: JSON.stringify(window.post),
-            boxPrevious: 10,
-            boxNext: 10
+            boxPrevious: null,
+            boxNext: null
         },
         function(data, status){
             alert("success!");
         });
-    }); 
+    });
 
 
+/*
         $('#updateText').click(function () {
         window.post2 = quill2.getContents();
-    
-        $.post("/api/textBoxes", 
+
+        $.post("/api/textBoxes",
         {
             addOrUpdate: 1, //0 is add, 1 is update, 2 is delete, 3 is get
             textBoxId: $('#textBoxId').val(),
@@ -239,10 +242,10 @@
         function(data, status){
             alert("success!");
         });
-    }); 
+    });
 
     $('#deleteText').click(function () {
-        $.post("/api/textBoxes", 
+        $.post("/api/textBoxes",
         {
             addOrUpdate: 2, //0 is add, 1 is update, 2 is delete, 3 is get
             textBoxId: $('#textBoxIdDelete').val(),
@@ -251,11 +254,11 @@
         function(data, status){
     alert("success!");
         });
-        
-        
-    }); 
+
+
+    });
     $('#getText').click(function () {
-        $.post("/api/textBoxes", 
+        $.post("/api/textBoxes",
         {
             addOrUpdate: 3, //0 is add, 1 is update, 2 is delete, 3 is get
             textBoxId: $('#textBoxIdGet').val(),
@@ -265,9 +268,10 @@
             console.log(data);
             quill3.setContents(JSON.parse(data.writtenText));
         });
-        
-        
-    }); 
+
+
+    });
+*/
 
 
 </script>

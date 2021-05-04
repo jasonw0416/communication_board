@@ -25,17 +25,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a3b787a-1dd3-4228-9ca2-2f855180ac26" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/chemistry.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/create_forum.html" beforeDir="false" afterPath="$PROJECT_DIR$/create_forum.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/create_post.html" beforeDir="false" afterPath="$PROJECT_DIR$/ignore/create_post.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/create_post2.html" beforeDir="false" afterPath="$PROJECT_DIR$/create_post2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forum.html" beforeDir="false" afterPath="$PROJECT_DIR$/forum.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/chemistry.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
