@@ -25,6 +25,7 @@
         <nav class="navbar-nav">
             <a class="nav-link active text-override" href="/">Home <span class="sr-only"></span></a>
             <a class="nav-link active text-override" href="/create_forum.html">Forum <span class="sr-only"></span></a>
+            <a class="nav-link active text-override" href="/postQues.html">Post <span class="sr-only"></span></a>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-override" href="#" style="color:black" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
                     Chapters
@@ -94,7 +95,7 @@
         </div>
     </div>
     <div class="col-sm-4">
-        <input type="text" id="userIdPost" value="userId"><br><br>
+        <!--<input type="text" id="userIdPost" value="userId"><br><br>-->
     </div>
 
 </div>
@@ -103,6 +104,10 @@
 </body>
 
 <script>
+
+    data2d = getDatabase();
+
+
     $( document ).ready(function() {
         $('.dropdown').each(function (key, dropdown) {
             var $dropdown = $(dropdown);
@@ -140,12 +145,14 @@
                 categoryId: newBoxId,
                 userId: 1,
                 writtenText: JSON.stringify(window.post),
-                boxPrevious: null,
-                boxNext: null
+                boxPrevious: undefined,
+                boxNext: undefined
             },
             function(data, status){
                 alert("success!");
             });
+
+        data2d = getDatabase();
     });
 
     function getLastID () {

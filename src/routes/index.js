@@ -39,7 +39,7 @@ module.exports.register = async server => {
         handler: async (request, h) => {
             return h.file('./public/css/main.css');
         }
-    })
+    });
 
     server.route({
         method: 'GET',
@@ -47,6 +47,14 @@ module.exports.register = async server => {
         handler: async (request, h) => {
             return h.file('./images/chemistry.jpeg');
         }
-    })
+    });
+
+    server.route({
+        method: 'GET',
+        path: '/postQues.html',
+        handler: async (request, h) => {
+            return h.file('./postQues.html');
+        }
+    });
 
 };

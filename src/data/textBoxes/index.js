@@ -26,7 +26,7 @@ const register = async({sql, getConnection}) => {
         return await request.query(sqlQueries.addTextBox);
     };
 
-    const updateTextBox = async ({textBoxId, userId, categoryId, writtenText}) => {
+    const updateTextBox = async ({textBoxId, userId, categoryId, writtenText, boxNext, boxPrevious}) => {
         const pool = await getConnection();
         const request = await pool.request();
 
@@ -34,6 +34,8 @@ const register = async({sql, getConnection}) => {
         request.input("textBoxId", sql.Int, textBoxId);
         request.input("categoryId", sql.Int, categoryId);
         request.input("writtenText", sql.NVarChar(1000), writtenText);
+        request.input("boxNext", sql.Int, boxNext);
+        request.input("boxPrevious", sql.Int, boxPrevious);
         return request.query(sqlQueries.updateTextBox);
     };
 
@@ -42,6 +44,7 @@ const register = async({sql, getConnection}) => {
         const request = await pool.request();
         request.input("textBoxId", sql.Int, textBoxId);
         request.input("userId", sql.Int, 1);
+        request.input("textBoxIdInc", sql.Int, textBoxId - 1);
         return request.query(sqlQueries.deleteTextBox);
     };
 

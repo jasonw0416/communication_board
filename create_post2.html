@@ -23,6 +23,7 @@
         <nav class="navbar-nav">
             <a class="nav-link active text-override" href="/">Home <span class="sr-only"></span></a>
             <a class="nav-link active text-override" href="/create_forum.html">Forum <span class="sr-only"></span></a>
+            <a class="nav-link active text-override" href="/postQues.html">Post <span class="sr-only"></span></a>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-override" href="#" style="color:black" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
                     Chapters
@@ -57,7 +58,6 @@
         </nav>
     </nav>
 </nav>
-
 
     <div class="question" id="questionDisplay">
         <div class="row">
@@ -190,6 +190,9 @@
                 `
 
                             </div>
+                            <br>
+                            <button type="submit" class="btn btn-primary mb-3" onclick="deleteTextBox(` + i +`)">Delete</button>
+
                         </div>
 
                     </div>`;
@@ -212,7 +215,7 @@
     $('#postText').click(function () {
         window.post = quill.getContents();
         lastBox = data2d[questionId][data2d[questionId].length - 1];
-        newBoxId = getLastID() + 1;
+        newBoxId = getLastID() + 1; //need to reset getLastID
 
         $.post("/api/textBoxes",
             {
@@ -221,12 +224,27 @@
                 userId: 1,
                 writtenText: JSON.stringify(window.post),
                 boxPrevious: lastBox.textBoxId,
-                boxNext: null
+                boxNext: undefined
             });
 
-        $.post("/api/textBoxes",
+        if(lastBox.boxPrevious == null || lastBox.boxPrevious == undefined){
+            $.post("/api/textBoxes",
             {
                 addOrUpdate: 1, //0 is add, 1 is update, 2 is delete, 3 is get
+                textBoxId: lastBox.textBoxId,
+                categoryId: lastBox.textBoxId, // gotta make function for ID
+                userId: 1,
+                writtenText: lastBox.writtenText,
+                boxPrevious: undefined,
+                boxNext: newBoxId
+            });
+
+        }
+        else{
+            $.post("/api/textBoxes",
+            {
+                addOrUpdate: 1, //0 is add, 1 is update, 2 is delete, 3 is get
+                textBoxId: lastBox.textBoxId,
                 categoryId: lastBox.textBoxId, // gotta make function for ID
                 userId: 1,
                 writtenText: lastBox.writtenText,
@@ -234,8 +252,102 @@
                 boxNext: newBoxId
             });
 
+        }
+
+        
+
+        data2d = getDatabase();
+
         location.reload();
     });
+
+    function deleteTextBox(id) {
+
+        currentBox = data2d[questionId][id];
+        previousBox = data2d[questionId][id - 1];
+
+
+
+
+
+        if(previousBox.boxPrevious == null || previousBox.boxPrevious == undefined){
+            if(currentBox.boxNext == null || currentBox.boxNext == undefined){
+                $.post("/api/textBoxes",
+                {
+                    addOrUpdate: 1, //0 is add, 1 is update, 2 is delete, 3 is get
+                    textBoxId: previousBox.textBoxId,
+                    categoryId: previousBox.textBoxId, // gotta make function for ID
+                    userId: 1,
+                    writtenText: previousBox.writtenText,
+                    boxPrevious: undefined,
+                    boxNext: undefined
+                });
+
+            }
+            else{
+                $.post("/api/textBoxes",
+                {
+                    addOrUpdate: 1, //0 is add, 1 is update, 2 is delete, 3 is get
+                    textBoxId: previousBox.textBoxId,
+                    categoryId: previousBox.textBoxId, // gotta make function for ID
+                    userId: 1,
+                    writtenText: previousBox.writtenText,
+                    boxPrevious: undefined,
+                    boxNext: currentBox.boxNext
+                });
+
+            }
+
+
+        }
+        else{
+            $.post("/api/textBoxes",
+            {
+                addOrUpdate: 1, //0 is add, 1 is update, 2 is delete, 3 is get
+                textBoxId: previousBox.textBoxId,
+                categoryId: previousBox.textBoxId, // gotta make function for ID
+                userId: 1,
+                writtenText: previousBox.writtenText,
+                boxPrevious: previousBox.boxPrevious,
+                boxNext: currentBox.boxNext
+            });
+        }
+        if(!(currentBox.boxNext == null || currentBox.boxNext == undefined)){
+            $.post("/api/textBoxes",
+            {
+                addOrUpdate: 1, //0 is add, 1 is update, 2 is delete, 3 is get
+                textBoxId: currentBox.boxNext,
+                categoryId: currentBox.boxNext.categoryId, // gotta make function for ID
+                userId: 1,
+                writtenText: currentBox.boxNext.writtenText,
+                boxPrevious: previousBox.textBoxId,
+                boxNext: currentBox.boxNext.boxNext
+            });
+
+        }
+
+        
+
+        $.post("/api/textBoxes",
+        {
+            addOrUpdate: 2, //0 is add, 1 is update, 2 is delete, 3 is get
+                textBoxId: currentBox.textBoxId,
+                userId: 1,
+        },
+        function(data, status){
+        });
+
+
+        
+
+        data2d = getDatabase();
+
+        location.reload();
+    }
+
+    
+
+
 
     // I THINK U SHOULD RELOAD THE PAGE AFTER THIS (RELOAD THE GETDATABASE)
 

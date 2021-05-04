@@ -39,8 +39,8 @@ module.exports.register = async server => {
                     return res.recordset[0];
                 }
                 else if (request.payload.addOrUpdate == 1){ //don't make this triple
-                    const {addOrUpdate, textBoxId, userId, categoryId, writtenText} = request.payload;
-                    const res = await db.textBoxes.updateTextBox({textBoxId, userId, categoryId, writtenText});
+                    const {addOrUpdate, textBoxId, userId, categoryId, writtenText, boxNext, boxPrevious} = request.payload;
+                    const res = await db.textBoxes.updateTextBox({textBoxId, userId, categoryId, writtenText, boxNext, boxPrevious});
                     return res.recordset[0];
 
 

@@ -1,6 +1,8 @@
 UPDATE [textBox]
 SET [categoryId] = @categoryId,
-[writtenText] = @writtenText
+[writtenText] = @writtenText,
+[boxNext] = @boxNext,
+[boxPrevious] = @boxPrevious
 WHERE [textBoxId] = @textBoxId
 and [userId] = @userId
 
