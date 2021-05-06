@@ -7,7 +7,6 @@ dotenv.config();
 
 const {
     PORT,
-    HOST,
     HOST_URL,
     COOKIE_ENCRYPT_PWD,
     SQL_PORT,
@@ -23,7 +22,6 @@ const {
 const sqlEncrypt = process.env.SQL_ENCRYPT === "true";
 
 assert( process.env.PORT || PORT, "PORT configuration is required." );
-assert( HOST, "HOST configuration is required." );
 assert( HOST_URL, "HOST_URL configuration is required." );
 assert( COOKIE_ENCRYPT_PWD, "COOKIE_ENCRYPT_PWD configuration is required." );
 assert( SQL_PORT, "SQL_PORT configuration is required. ");
@@ -38,7 +36,6 @@ assert( OKTA_CLIENT_SECRET, "OKTA_CLIENT_SECRET configuration is required." );*/
 
 module.exports = {
     port: process.env.PORT || PORT,
-    host: HOST,
     url: HOST_URL,
     cookiePWD: COOKIE_ENCRYPT_PWD,
     sql: {
