@@ -37,7 +37,7 @@ assert( OKTA_CLIENT_SECRET, "OKTA_CLIENT_SECRET configuration is required." );*/
 
 
 module.exports = {
-    port: PORT,
+    port: PORT || process.env.PORT,
     host: HOST,
     url: HOST_URL,
     cookiePWD: COOKIE_ENCRYPT_PWD,
