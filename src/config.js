@@ -10,6 +10,7 @@ const {
     HOST,
     HOST_URL,
     COOKIE_ENCRYPT_PWD,
+    SQL_PORT,
     SQL_SERVER,
     SQL_USER,
     SQL_DATABASE,
@@ -25,6 +26,7 @@ assert( PORT, "PORT configuration is required." );
 assert( HOST, "HOST configuration is required." );
 assert( HOST_URL, "HOST_URL configuration is required." );
 assert( COOKIE_ENCRYPT_PWD, "COOKIE_ENCRYPT_PWD configuration is required." );
+assert( SQL_PORT, "SQL_PORT configuration is required.");
 assert( SQL_SERVER, "SQL_SERVER configuration is required." );
 assert( SQL_DATABASE, "SQL_DATABASE configuration is required." );
 assert( SQL_USER, "SQL_USER configuration is required." );
@@ -40,6 +42,7 @@ module.exports = {
     url: HOST_URL,
     cookiePWD: COOKIE_ENCRYPT_PWD,
     sql: {
+        port: SQL_PORT,
         server: SQL_SERVER,
         database: SQL_DATABASE,
         user: SQL_USER,
