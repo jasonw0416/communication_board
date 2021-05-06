@@ -22,7 +22,7 @@ const {
 
 const sqlEncrypt = process.env.SQL_ENCRYPT === "true";
 
-assert( PORT, "PORT configuration is required." );
+assert( process.env.PORT || PORT, "PORT configuration is required." );
 assert( HOST, "HOST configuration is required." );
 assert( HOST_URL, "HOST_URL configuration is required." );
 assert( COOKIE_ENCRYPT_PWD, "COOKIE_ENCRYPT_PWD configuration is required." );
@@ -37,7 +37,7 @@ assert( OKTA_CLIENT_SECRET, "OKTA_CLIENT_SECRET configuration is required." );*/
 
 
 module.exports = {
-    port: PORT,
+    port: process.env.PORT || PORT,
     host: HOST,
     url: HOST_URL,
     cookiePWD: COOKIE_ENCRYPT_PWD,
