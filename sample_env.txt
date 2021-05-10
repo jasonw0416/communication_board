@@ -13,9 +13,3 @@ SQL_PASSWORD= PASSWORD
 SQL_DATABASE= DATABASE
 SQL_SERVER=localhost
 SQL_ENCRYPT=false
-
-
-#okta config
-OKTA_ORG_URL=https://{yourOrgURL}
-OKTA_CLIENT_ID={yourclientID}
-OKTA_CLIENT_SECRET{yourClientSecret}

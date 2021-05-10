@@ -189,6 +189,7 @@
    
         async: false,
         success: function(data) {
+            console.log(data);
             var questions = getQuestions(data);
             ret = getQuestionsAndAnswers(data, questions);
         } 
