@@ -7,7 +7,6 @@ dotenv.config();
 
 const {
     PORT,
-    HOST,
     HOST_URL,
     SQL_SERVER,
     SQL_PORT,
@@ -19,7 +18,6 @@ const {
 const sqlEncrypt = process.env.SQL_ENCRYPT === "true";
 
 assert( PORT, "PORT configuration is required." );
-assert( HOST, "HOST configuration is required." );
 assert( HOST_URL, "HOST_URL configuration is required." );
 assert( SQL_SERVER, "SQL_SERVER configuration is required." );
 assert( SQL_PORT, "SQL_PORT configuration is required." );
@@ -30,7 +28,6 @@ assert( SQL_PASSWORD, "SQL_PASSWORD configuration is required." );
 
 module.exports = {
     port: PORT,
-    host: HOST,
     url: HOST_URL,
     sql: {
         server: SQL_SERVER,
