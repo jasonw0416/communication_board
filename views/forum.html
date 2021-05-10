@@ -105,7 +105,22 @@
     <!--<button id="getQues" class="btn btn-info">Get Question</button>-->
 
     <div class="row">
-        <div class="col-sm-4"></div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-2">
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    Results Per Page: 10
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" onclick="loadEntries(data2d.length - 1, 5); changeDropDownButton(5);">5</a></li>
+                    <li><a class="dropdown-item" onclick="loadEntries(data2d.length - 1, 10); changeDropDownButton(10);">10</a></li>
+                    <li><a class="dropdown-item" onclick="loadEntries(data2d.length - 1, 15); changeDropDownButton(15);">15</a></li>
+                    <li><a class="dropdown-item" onclick="loadEntries(data2d.length - 1, 20); changeDropDownButton(20);">20</a></li>
+                </ul>
+            </div>
+            
+            
+        </div>
         <div class="col-sm-4">
             <div id = "question1" class="list-group" style>
             </div>
@@ -116,22 +131,8 @@
 
 
 
-    <ul class="pagination justify-content-center spacing">
-        <li class="page-item">
-            <a id="getPrev" href="#" aria-label="Previous">
-                <span class="page-arrow" aria-hidden="true">&laquo;</span>
-            </a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">4</a></li>
-        <li class="page-item"><a class="page-link" href="#">5</a></li>
-        <li class="page-item">
-            <a id="getNext" href="#" aria-label="Next">
-                <span class="page-arrow" aria-hidden="true">&raquo;</span>
-            </a>
-        </li>
+    <ul class="pagination justify-content-center spacing" id="pages">
+        
     </ul>
 </div>
 
@@ -156,8 +157,20 @@
 
     var quills = {};
 
-    window.onload = function () {
-        for (let i = 0; i < 10; i++){
+    function changeDropDownButton (displayAmount){
+        document.getElementById('dropdownMenuButton1').innerHTML = "Results Per Page: " + String(displayAmount);
+    }
+
+    function loadEntries (startIndex, displayAmount){
+        document.getElementById('question1').innerHTML = "";
+        document.getElementById('pages').innerHTML = "";
+
+
+
+        for (let i = startIndex; i > startIndex - displayAmount; i--){
+            if(i < 0){
+                break;
+            }
             data = data2d[i][0];
             var id = "editor" + data.textBoxId;
 
@@ -179,6 +192,36 @@
             quills[data.textBoxId].setContents(JSON.parse(data.writtenText));
         }
 
+        document.getElementById('pages').innerHTML += `<li class="page-item">
+            <a id="getPrev" href="#" aria-label="Previous">
+                <span class="page-arrow" aria-hidden="true">&laquo;</span>
+            </a>
+        </li>`;
+
+        for(let k = 0; k < (data2d.length/displayAmount) + 1; k++){
+            console.log(k);
+            if(k == 0){
+                document.getElementById('pages').innerHTML += `<li class="page-item"><a class="page-link" onclick="loadEntries(data2d.length - ` + 1 + `, ` + displayAmount +`)">` + (k + 1) + `</a></li>`;
+            }
+            else {
+                document.getElementById('pages').innerHTML += `<li class="page-item"><a class="page-link" onclick="loadEntries(data2d.length - ` + (k * displayAmount + 1) + `, ` + displayAmount +`)">` + (k + 1) + `</a></li>`;
+            }
+            
+        }
+
+        document.getElementById('pages').innerHTML += `
+        <li class="page-item">
+            <a id="getNext" href="#" aria-label="Next">
+                <span class="page-arrow" aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+        `;
+
+        
+    }
+
+    window.onload = function (){
+        loadEntries(data2d.length - 1, 10);
     };
 
 
