@@ -13,7 +13,7 @@ module.exports.register = async server => {
         method:"GET",
         path:"/",
         handler: async (request, h) => {
-            return h.file('./forum.html');
+            return h.file('./views/forum.html');
         }
     });
 
@@ -21,7 +21,7 @@ module.exports.register = async server => {
         method:"GET",
         path:"/create_post2.html",
         handler: async (request, h) => {
-            return h.file('./create_post2.html');
+            return h.file('./views/create_post2.html');
         }
     });
 
@@ -29,7 +29,7 @@ module.exports.register = async server => {
         method:"GET",
         path:"/create_forum.html",
         handler: async (request, h) => {
-            return h.file('./create_forum.html');
+            return h.file('./views/create_forum.html');
         }
     });
 
@@ -61,7 +61,7 @@ module.exports.register = async server => {
         method: 'GET',
         path: '/postQues.html',
         handler: async (request, h) => {
-            return h.file('./postQues.html');
+            return h.file('./views/postQues.html');
         }
     });
 
