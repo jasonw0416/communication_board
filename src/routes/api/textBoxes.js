@@ -17,6 +17,10 @@ module.exports.register = async server => {
         database: config.sql.user
     });
 
+    connection.on('error', function(err) {
+      console.log(err);
+  });
+
 
     server.route({
         method:"GET",
