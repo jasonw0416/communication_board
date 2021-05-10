@@ -264,7 +264,7 @@
         },
         function(data, status){
             console.log(data);
-            quill3.setContents(JSON.parse(data.writtenText));
+            quill3.setContents(JSON.parse(data[0].writtenText));
         });
 
 

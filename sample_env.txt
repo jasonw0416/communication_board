@@ -1,0 +1,14 @@
+NODE_ENV=development
+
+# hapi server config
+PORT=PORT
+HOST=localhost
+HOST_URL=https://localhost:PORT
+
+
+#sql server config
+SQL_USER= USER_NAME
+SQL_PASSWORD= PASSWORD
+SQL_DATABASE= DATABASE
+SQL_SERVER=localhost
+SQL_ENCRYPT=false
