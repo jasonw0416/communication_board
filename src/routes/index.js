@@ -51,6 +51,14 @@ module.exports.register = async server => {
 
     server.route({
         method: 'GET',
+        path: '/images/icon.png',
+        handler: async (request, h) => {
+            return h.file('./images/icon.png');
+        }
+    });
+
+    server.route({
+        method: 'GET',
         path: '/postQues.html',
         handler: async (request, h) => {
             return h.file('./postQues.html');
