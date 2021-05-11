@@ -225,9 +225,9 @@
     };
 
     $(searchButton).click(function (){
-        if(document.getElementById("questionAsk").value == ""){
-            data2d = getDatabase();
-        }
+
+        data2d = getDatabase();
+
         newdata2d = [];
         for(var i = 0; i < data2d.length; i++){
             console.log(document.getElementById("questionAsk").value);
