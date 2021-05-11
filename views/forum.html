@@ -162,9 +162,9 @@
     }
 
     function loadEntries (startIndex, displayAmount){
+        displayAmount = parseInt(displayAmount);
         document.getElementById('question1').innerHTML = "";
         document.getElementById('pages').innerHTML = "";
-
 
 
         for (let i = startIndex; i > startIndex - displayAmount; i--){
@@ -216,6 +216,8 @@
         </li>
         `;
 
+        return false;
+
 
     }
 
@@ -241,6 +243,8 @@
         data2d = newdata2d;
         loadEntries(data2d.length - 1, document.getElementById("dropdownMenuButton1").innerHTML.trim().split(" ")[document.getElementById("dropdownMenuButton1").innerHTML.trim().split(" ").length - 1]);
 
+
+        return false;
     });
 
 
