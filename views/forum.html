@@ -84,10 +84,10 @@
                     <form class="row g-3">
                         <div class="col-sm">
                             <label for="question" class="visually-hidden">Question</label>
-                            <input type="question" class="form-control" id="question" placeholder="What do you want to ask or talk about?">
+                            <input type="question" class="form-control" id="questionAsk" placeholder="What do you want to ask or talk about?">
                         </div>
                         <div class="col-auto">
-                            <button type="submit" class="btn btn-primary mb-3">Submit!</button>
+                            <button type="submit" class="btn btn-primary mb-3" id="searchButton">Search</button>
                         </div>
                     </form>
                 </div>
@@ -150,7 +150,7 @@
         [{'color' : []}, {'background' : []}]];
 
 
-    var data2d = getDatabase();
+    var data2d = [];
 
 
     console.log(data2d);
@@ -199,7 +199,6 @@
         </li>`;
 
         for(let k = 0; k < (data2d.length/displayAmount) + 1; k++){
-            console.log(k);
             if(k == 0){
                 document.getElementById('pages').innerHTML += `<li class="page-item"><a class="page-link" onclick="loadEntries(data2d.length - ` + 1 + `, ` + displayAmount +`)">` + (k + 1) + `</a></li>`;
             }
@@ -221,8 +220,28 @@
     }
 
     window.onload = function (){
+        data2d = getDatabase();
         loadEntries(data2d.length - 1, 10);
     };
+
+    $(searchButton).click(function (){
+        if(document.getElementById("questionAsk").value == ""){
+            data2d = getDatabase();
+        }
+        newdata2d = [];
+        for(var i = 0; i < data2d.length; i++){
+            console.log(document.getElementById("questionAsk").value);
+            if(JSON.parse(data2d[i][0].writtenText).ops[0].insert.search(document.getElementById("questionAsk").value) != -1){
+                newdata2d[i] = data2d[i];
+            }
+        }
+        console.log(newdata2d);
+        console.log(document.getElementById("dropdownMenuButton1").innerHTML.trim().split(" ")[document.getElementById("dropdownMenuButton1").innerHTML.trim().split(" ").length - 1]);
+
+        data2d = newdata2d;
+        loadEntries(data2d.length - 1, document.getElementById("dropdownMenuButton1").innerHTML.trim().split(" ")[document.getElementById("dropdownMenuButton1").innerHTML.trim().split(" ").length - 1]);
+
+    });
 
 
 
