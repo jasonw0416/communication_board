@@ -72,13 +72,13 @@
                 <h1 class="centerText text-white">Bialigy Communication Forum</h1>
             </div>
             <div class="col-sm-4">
-    
+
             </div>
         </div>
 
         <div class="row firstRow">
             <div class="col-sm-4"></div>
-    
+
             <div class="col-sm-4">
                 <div class="main-question">
                     <form class="row g-3">
@@ -92,14 +92,14 @@
                     </form>
                 </div>
             </div>
-    
+
             <div class="col-sm-4"></div>
         </div>
     </div>
 
 
 
-    
+
 
 
     <!--<button id="getQues" class="btn btn-info">Get Question</button>-->
@@ -118,8 +118,8 @@
                     <li><a class="dropdown-item" onclick="loadEntries(data2d.length - 1, 20); changeDropDownButton(20);">20</a></li>
                 </ul>
             </div>
-            
-            
+
+
         </div>
         <div class="col-sm-4">
             <div id = "question1" class="list-group" style>
@@ -132,7 +132,7 @@
 
 
     <ul class="pagination justify-content-center spacing" id="pages">
-        
+
     </ul>
 </div>
 
@@ -205,7 +205,7 @@
             else {
                 document.getElementById('pages').innerHTML += `<li class="page-item"><a class="page-link" onclick="loadEntries(data2d.length - ` + (k * displayAmount + 1) + `, ` + displayAmount +`)">` + (k + 1) + `</a></li>`;
             }
-            
+
         }
 
         document.getElementById('pages').innerHTML += `
@@ -218,7 +218,7 @@
 
         return false;
 
-        
+
     }
 
     window.onload = function (){
@@ -227,7 +227,7 @@
     };
 
     $(searchButton).click(function (){
-    
+
         data2d = getDatabase();
 
         newdata2d = [];
@@ -243,7 +243,7 @@
         data2d = newdata2d;
         loadEntries(data2d.length - 1, document.getElementById("dropdownMenuButton1").innerHTML.trim().split(" ")[document.getElementById("dropdownMenuButton1").innerHTML.trim().split(" ").length - 1]);
 
-    
+
         return false;
     });
 
@@ -252,25 +252,25 @@
     function getDatabase () {
         var ret = [];
         $.ajax({
-        url: "/api/textBoxes",
-        type: 'get',
-   
-        async: false,
-        success: function(data) {
-            console.log(data);
-            var questions = getQuestions(data);
-            ret = getQuestionsAndAnswers(data, questions);
-        } 
+            url: "/api/textBoxes",
+            type: 'get',
+
+            async: false,
+            success: function(data) {
+                console.log(data);
+                var questions = getQuestions(data);
+                ret = getQuestionsAndAnswers(data, questions);
+            }
         });
         return ret;
-        /*$.get("/api/textBoxes", 
+        /*$.get("/api/textBoxes",
             function(data, status) {;
                 var questions = getQuestions(data);
                 var ret = getQuestionsAndAnswers(data, questions);
-                
-           
+
+
             }
-        
+
         )
         console.log(database);*/
 
@@ -279,21 +279,21 @@
     function getQuestions(data){
 
         var questions = [];
-            for(var i = 0; i < data.length; i++){
-                if(data[i].boxPrevious == null){
-                    questions.push(data[i]);
-                }
+        for(var i = 0; i < data.length; i++){
+            if(data[i].boxPrevious == null){
+                questions.push(data[i]);
             }
+        }
         return questions;
-        
+
     }
 
     function searchForTextBoxId(Id, data){
         for(var i = 0; i < data.length; i++){
-                if(data[i].textBoxId == Id){
-                    return data[i];
-                }
+            if(data[i].textBoxId == Id){
+                return data[i];
             }
+        }
     }
 
     function getQuestionsAndAnswers(data, questions){
