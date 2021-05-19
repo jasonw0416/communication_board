@@ -228,14 +228,6 @@
 
     }
 
-    function searchForTextBoxId(Id, data){
-        for(var i = 0; i < data.length; i++){
-            if(data[i].textBoxId == Id){
-                return data[i];
-            }
-        }
-    }
-
     function getQuestionsAndAnswers(data, questions){
         var ret = [];
         for(var i = 0; i < questions.length; i++){
@@ -243,8 +235,8 @@
             answers.push(questions[i]);
             var currentBox = questions[i];
             while(currentBox.boxNext != null){
-                answers.push(searchForTextBoxId(currentBox.boxNext, data));
-                currentBox = searchForTextBoxId(currentBox.boxNext, data);
+                answers.push(data[currentBox.boxNext - 1]);
+                currentBox = data[currentBox.boxNext - 1];
                 if(currentBox == null){
                     break;
                 }
