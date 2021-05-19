@@ -66,12 +66,23 @@
 <div class="row postQuill">
     <div class="col-sm-4"></div>
     <div class="col-sm-4">
-        <h2>Question:</h2>
+        <h2>Post Your Question</h2>
     </div>
     
-    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+    </div>
 </div>
 
+
+<div class="row postQuill">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+        <div id="title"></div>
+    </div>
+    
+    <div class="col-sm-4">
+    </div>
+</div>
 
 
 <div class="row postQuill">
@@ -93,7 +104,7 @@
         <button id="postText" class="btn btn-primary">Post</button>
     </div>
     <div class="col-sm-6">
-        <div class="dropdown">
+        <!--<div class="dropdown">
             <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 Select Category
             </button>
@@ -108,7 +119,7 @@
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="#">Other</a></li>
             </ul>
-        </div>
+        </div>-->
     </div>
     
 
@@ -129,6 +140,7 @@
                 $dropdown.find('button').text($(this).text()).append(' <span class="caret"></span>');
             });
         });
+        quill2.setContents({ops :[{ attributes :{ size : "large" }, insert : "Title"}]});
     });
 
     var toolbarOptions = [['bold', 'italic', 'underline', 'strike'],
@@ -149,24 +161,40 @@
         theme: 'snow'
     });
 
+    var quill2 = new Quill('#title', {
+        modules: {
+            toolbar: false
+        },
+
+        theme: 'snow'
+    });
+
+
     $('#postText').click(function () {
         window.post = quill.getContents();
 
-        $.post("/api/textBoxes",
+        $.ajax({
+            async: false,
+            type: "POST",
+            url: "/api/textBoxes",
+            data: 
             {
                 addOrUpdate: 0, //0 is add, 1 is update, 2 is delete, 3 is get
                 categoryId: -1,
                 userId: 1,
                 writtenText: JSON.stringify(window.post),
                 boxPrevious: undefined,
-                boxNext: undefined
+                boxNext: undefined,
+                title: JSON.stringify(quill2.getContents())
             },
-            function(data, status){
-                console.log(status);
-            });
+        });
 
         data2d = getDatabase();
         window.location.replace("/create_post2.html#" + (data2d.length - 1));
+    });
+
+    $('#title').click(function (){
+        quill2.setContents({ops:[{insert:""}]});
     });
 
 

@@ -2,6 +2,7 @@ UPDATE textBox
 SET categoryId = ?,
 writtenText = ?,
 boxNext = ?,
-boxPrevious = ?
+boxPrevious = ?,
+title = ?
 WHERE textBoxId = ?
 and userId = ?

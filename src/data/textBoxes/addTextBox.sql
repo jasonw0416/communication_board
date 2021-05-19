@@ -1,3 +1,3 @@
-INSERT INTO textBox (categoryId, userId, writtenText, boxPrevious, boxNext)
+INSERT INTO textBox (categoryId, userId, writtenText, boxPrevious, boxNext, title)
 VALUES
-(?, ?, ?, ?, ?)
+(?, ?, ?, ?, ?, ?)

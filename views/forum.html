@@ -189,7 +189,7 @@
             });
 
             quills[data.textBoxId].enable(false);
-            quills[data.textBoxId].setContents(JSON.parse(data.writtenText));
+            quills[data.textBoxId].setContents(JSON.parse(data.title));
         }
 
         document.getElementById('pages').innerHTML += `<li class="page-item">
@@ -198,7 +198,7 @@
             </a>
         </li>`;
 
-        for(let k = 0; k < (data2d.length/displayAmount) + 1; k++){
+        for(let k = 0; k < (data2d.length/displayAmount); k++){
             if(k == 0){
                 document.getElementById('pages').innerHTML += `<li class="page-item"><a class="page-link" onclick="loadEntries(data2d.length - ` + 1 + `, ` + displayAmount +`)">` + (k + 1) + `</a></li>`;
             }
@@ -215,6 +215,9 @@
             </a>
         </li>
         `;
+        if(data2d.length/displayAmount == 0){
+            document.getElementById('pages').innerHTML = "";
+        }
 
         return false;
 

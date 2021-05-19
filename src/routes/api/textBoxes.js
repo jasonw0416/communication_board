@@ -69,13 +69,13 @@ module.exports.register = async server => {
                 
                 if(request.payload.addOrUpdate == 0){ //don't make this triple
 
-                    const {addOrUpdate, categoryId, userId, writtenText, boxPrevious, boxNext} = request.payload;
+                    const {addOrUpdate, categoryId, userId, writtenText, boxPrevious, boxNext, title} = request.payload;
       
 
                     return new Promise((resolve, reject) => {
                         // connection.query(sqlQueries.addTextBox, [categoryId, userId, writtenText, boxPrevious, boxNext], function (error, results, fields)
                         if(boxPrevious == undefined && boxNext == undefined){
-                            connection.query(sqlQueries.addTextBox, [parseInt(categoryId), parseInt(userId), writtenText, undefined, undefined], function (error, results, fields){
+                            connection.query(sqlQueries.addTextBox, [parseInt(categoryId), parseInt(userId), writtenText, undefined, undefined, title], function (error, results, fields){
                                 if (error) {
                                   console.log(error);
                                   return reject(error);
@@ -88,7 +88,7 @@ module.exports.register = async server => {
                               })
                         }
                         else if(boxPrevious == undefined){
-                            connection.query(sqlQueries.addTextBox, [parseInt(categoryId), parseInt(userId), writtenText, undefined, parseInt(boxNext)], function (error, results, fields){
+                            connection.query(sqlQueries.addTextBox, [parseInt(categoryId), parseInt(userId), writtenText, undefined, parseInt(boxNext), title], function (error, results, fields){
                                 if (error) {
                                   console.log(error);
                                   return reject(error);
@@ -101,7 +101,7 @@ module.exports.register = async server => {
                               })
                         }
                         else if(boxNext == undefined){
-                            connection.query(sqlQueries.addTextBox, [parseInt(categoryId), parseInt(userId), writtenText, parseInt(boxPrevious), undefined], function (error, results, fields){
+                            connection.query(sqlQueries.addTextBox, [parseInt(categoryId), parseInt(userId), writtenText, parseInt(boxPrevious), undefined, title], function (error, results, fields){
                                 if (error) {
                                   console.log(error);
                                   return reject(error);
@@ -114,7 +114,7 @@ module.exports.register = async server => {
                               })
                         }
                         else{
-                            connection.query(sqlQueries.addTextBox, [parseInt(categoryId), parseInt(userId), writtenText, parseInt(boxPrevious), parseInt(boxNext)], function (error, results, fields){
+                            connection.query(sqlQueries.addTextBox, [parseInt(categoryId), parseInt(userId), writtenText, parseInt(boxPrevious), parseInt(boxNext), title], function (error, results, fields){
                                 if (error) {
                                   console.log(error);
                                   return reject(error);
@@ -135,14 +135,14 @@ module.exports.register = async server => {
                     return res.recordset[0];*/
                 }
                 else if (request.payload.addOrUpdate == 1){ //don't make this triple
-                    const {addOrUpdate, textBoxId, userId, categoryId, writtenText, boxNext, boxPrevious} = request.payload;
+                    const {addOrUpdate, textBoxId, userId, categoryId, writtenText, boxNext, boxPrevious, title} = request.payload;
 
 
 
                     return new Promise((resolve, reject) => {
 
                         if(boxPrevious == undefined && boxNext == undefined){
-                            connection.query(sqlQueries.updateTextBox, [parseInt(categoryId), writtenText, undefined, undefined, parseInt(textBoxId), parseInt(userId)], function (error, results, fields){
+                            connection.query(sqlQueries.updateTextBox, [parseInt(categoryId), writtenText, undefined, undefined, title, parseInt(textBoxId), parseInt(userId)], function (error, results, fields){
                                 if (error) {
                                     console.log(error);
                                   return reject(error)
@@ -154,7 +154,7 @@ module.exports.register = async server => {
                               })
                         }
                         else if(boxNext == undefined){
-                            connection.query(sqlQueries.updateTextBox, [parseInt(categoryId), writtenText, undefined, parseInt(boxPrevious), parseInt(textBoxId), parseInt(userId)], function (error, results, fields){
+                            connection.query(sqlQueries.updateTextBox, [parseInt(categoryId), writtenText, undefined, parseInt(boxPrevious), title, parseInt(textBoxId), parseInt(userId)], function (error, results, fields){
                                 if (error) {
                                     console.log(error);
                                   return reject(error)
@@ -167,7 +167,7 @@ module.exports.register = async server => {
 
                         }
                         else if(boxPrevious == undefined){
-                            connection.query(sqlQueries.updateTextBox, [parseInt(categoryId), writtenText, parseInt(boxNext), undefined, parseInt(textBoxId), parseInt(userId)], function (error, results, fields){
+                            connection.query(sqlQueries.updateTextBox, [parseInt(categoryId), writtenText, parseInt(boxNext), undefined, title, parseInt(textBoxId), parseInt(userId)], function (error, results, fields){
                                 if (error) {
                                     console.log(error);
                                   return reject(error)
@@ -179,7 +179,7 @@ module.exports.register = async server => {
                               })
                         }
                         else{
-                            connection.query(sqlQueries.updateTextBox, [parseInt(categoryId), writtenText, parseInt(boxNext), parseInt(boxPrevious), parseInt(textBoxId), parseInt(userId)], function (error, results, fields){
+                            connection.query(sqlQueries.updateTextBox, [parseInt(categoryId), writtenText, parseInt(boxNext), parseInt(boxPrevious), title, parseInt(textBoxId), parseInt(userId)], function (error, results, fields){
                                 if (error) {
                                     console.log(error);
                                   return reject(error)

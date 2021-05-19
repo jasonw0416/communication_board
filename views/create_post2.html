@@ -126,6 +126,8 @@
         theme: 'snow'
     });
 
+
+
     var data2d = getDatabase();
     
     console.log(data2d);
@@ -139,6 +141,8 @@
 
         data = data2d[questionId][0];
 
+        
+
         //data = {textBoxId: 2, writtenText: "{\"ops\":[{\"insert\":\"HI\\n\"}]}"};
         console.log(data);
         //quill3.setContents(JSON.parse(data.writtenText));
@@ -149,7 +153,7 @@
                         <div class="card-body">
 
                             <div class="card-title">
-                                <h1 style="background-color:transparent">Question</h1>
+                                <h1 style="background-color:transparent; margin: 10px 0 20px 0" id="questionTitle">`+ JSON.parse(data.title).ops[0].insert + `</h1>
                             </div>
 
                             <div class="" id=`+ id + `>` +
@@ -161,6 +165,8 @@
                     </div>`;
 
 
+
+        
         var id_for_quills = '#' + id;
         quills[data.textBoxId] = new Quill(id_for_quills, {
             modules: {
@@ -184,7 +190,7 @@
                         <div class="card-body">
 
                             <div class="card-title">
-                                <h1 style="background-color:transparent">Answer</h1>
+                                <h5 style="background-color:transparent; margin: 10px 0 20px 0">Answer `+ i + `</h5>
                             </div>
 
                             <div class="" id=`+ id + `>` +
@@ -225,7 +231,8 @@
                 userId: 1,
                 writtenText: JSON.stringify(window.post),
                 boxPrevious: lastBox.textBoxId,
-                boxNext: undefined
+                boxNext: undefined,
+                title: undefined
             });
 
         if(lastBox.boxPrevious == null || lastBox.boxPrevious == undefined){
@@ -237,7 +244,8 @@
                 userId: 1,
                 writtenText: lastBox.writtenText,
                 boxPrevious: undefined,
-                boxNext: newBoxId
+                boxNext: newBoxId,
+                title: lastBox.title
             });
 
         }
@@ -250,7 +258,8 @@
                 userId: 1,
                 writtenText: lastBox.writtenText,
                 boxPrevious: lastBox.boxPrevious,
-                boxNext: newBoxId
+                boxNext: newBoxId,
+                title: undefined
             });
 
         }
