@@ -150,7 +150,7 @@
         [{'direction' : 'rtl'}],
         [{'size' : ['small', false, 'large', 'huge']}],
         [{'font' : []}],
-        ['link', 'image', 'video', 'formula'],
+       
         [{'color' : []}, {'background' : []}]];
 
     var quill = new Quill('#editor', {
@@ -194,7 +194,9 @@
     });
 
     $('#title').click(function (){
-        quill2.setContents({ops:[{insert:""}]});
+        if(JSON.stringify(quill2.getContents()) == JSON.stringify({ops:[{attributes:{size: "large"}, insert : "Title"},{insert :"\n"}]})){
+            quill2.setContents({ops:[{insert:""}]});
+        }
     });
 
 
