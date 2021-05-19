@@ -9,25 +9,29 @@ module.exports.register = async server => {
 
     const sqlQueries = await utils.loadSqlQueries("textBoxes");
 
-    const connection = sql.createConnection({
-        host: config.sql.server,
-        port: config.sql.port,
-        user: config.sql.user,
-        password: config.sql.password,
-        database: config.sql.user
-    });
-
-    connection.on('error', function(err) {
-      console.log(err);
-  });
+  
 
 
     server.route({
+    
         method:"GET",
         path: "/api/textBoxes",
         
         handler: function (request, h) {
+          
             try {
+              const connection = sql.createConnection({
+                host: config.sql.server,
+                port: config.sql.port,
+                user: config.sql.user,
+                password: config.sql.password,
+                database: config.sql.user
+            });
+        
+            connection.on('error', function(err) {
+              console.log(err);
+          });
+              
 
                 return new Promise((resolve, reject) => {
                     connection.query(sqlQueries.getTextBoxes, function (error, results, fields){
@@ -38,8 +42,12 @@ module.exports.register = async server => {
                       console.log(results);
                 
                       return resolve(results);
-                    })
+                    });
+                    connection.end();
+                    
                   });
+
+                
 
                 /*connection.query("SELECT * FROM textBox", function (error, results, fields) {
                     if (error) throw error;
@@ -56,7 +64,9 @@ module.exports.register = async server => {
             catch (err) {
                 console.log(err);
             }
+          
         }
+        
     });
 
     server.route( {
@@ -65,6 +75,17 @@ module.exports.register = async server => {
         
         handler: function (request, h) {
             try {
+              const connection = sql.createConnection({
+                host: config.sql.server,
+                port: config.sql.port,
+                user: config.sql.user,
+                password: config.sql.password,
+                database: config.sql.user
+            });
+        
+            connection.on('error', function(err) {
+              console.log(err);
+          });
                 console.log(request.payload);
                 
                 if(request.payload.addOrUpdate == 0){ //don't make this triple
@@ -85,7 +106,8 @@ module.exports.register = async server => {
           
                   
                                 return resolve(results);
-                              })
+                              });
+                              connection.end();
                         }
                         else if(boxPrevious == undefined){
                             connection.query(sqlQueries.addTextBox, [parseInt(categoryId), parseInt(userId), writtenText, undefined, parseInt(boxNext), title], function (error, results, fields){
@@ -98,7 +120,9 @@ module.exports.register = async server => {
           
                   
                                 return resolve(results);
-                              })
+                              });
+                              connection.end();
+                              
                         }
                         else if(boxNext == undefined){
                             connection.query(sqlQueries.addTextBox, [parseInt(categoryId), parseInt(userId), writtenText, parseInt(boxPrevious), undefined, title], function (error, results, fields){
@@ -111,7 +135,8 @@ module.exports.register = async server => {
           
                   
                                 return resolve(results);
-                              })
+                              });
+                              connection.end();
                         }
                         else{
                             connection.query(sqlQueries.addTextBox, [parseInt(categoryId), parseInt(userId), writtenText, parseInt(boxPrevious), parseInt(boxNext), title], function (error, results, fields){
@@ -124,7 +149,8 @@ module.exports.register = async server => {
           
                   
                                 return resolve(results);
-                              })
+                              });
+                              connection.end();
                         }
                         
                       });
@@ -239,6 +265,7 @@ module.exports.register = async server => {
                 server.log(err);
                 return boom.boomify(err);
             }
+          
         }
 
     } );
