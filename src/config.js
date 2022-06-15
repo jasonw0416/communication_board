@@ -17,24 +17,24 @@ const {
 
 const sqlEncrypt = process.env.SQL_ENCRYPT === "true";
 
-assert( PORT, "PORT configuration is required." );
+/*assert( PORT, "PORT configuration is required." );
 assert( HOST_URL, "HOST_URL configuration is required." );
 assert( SQL_SERVER, "SQL_SERVER configuration is required." );
 assert( SQL_PORT, "SQL_PORT configuration is required." );
 assert( SQL_DATABASE, "SQL_DATABASE configuration is required." );
 assert( SQL_USER, "SQL_USER configuration is required." );
-assert( SQL_PASSWORD, "SQL_PASSWORD configuration is required." );
+assert( SQL_PASSWORD, "SQL_PASSWORD configuration is required." );*/
 
 
 module.exports = {
-    port: PORT,
-    url: HOST_URL,
+    port: PORT || 3000,
+    host: HOST_URL || 'localhost',
     sql: {
-        server: SQL_SERVER,
-        port: SQL_PORT,
-        database: SQL_DATABASE,
-        user: SQL_USER,
-        password: SQL_PASSWORD,
+        server: SQL_SERVER || 'localhost',
+        port: SQL_PORT || '3306',
+        database: SQL_DATABASE || 'posts',
+        user: SQL_USER || 'root',
+        password: SQL_PASSWORD || 'Wonjun0416',
         options:{
             encrypt: sqlEncrypt,
             enableArithAbort: true,

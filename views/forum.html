@@ -284,12 +284,6 @@
     });
 
 
-
-
-
-
-
-
     function getDatabase () {
         var ret = [];
         $.ajax({
@@ -304,17 +298,6 @@
             }
         });
         return ret;
-        /*$.get("/api/textBoxes",
-            function(data, status) {;
-                var questions = getQuestions(data);
-                var ret = getQuestionsAndAnswers(data, questions);
-
-
-            }
-
-        )
-        console.log(database);*/
-
     }
 
     function getQuestions(data){

@@ -231,42 +231,63 @@
         }
         newBoxId = count + 1;
 
-        $.post("/api/textBoxes",
-            {
-                addOrUpdate: 0, //0 is add, 1 is update, 2 is delete, 3 is get
+        $.ajax({
+            async: false,
+            type: "POST",
+            url: "/api/textBoxes",
+            dataType: 'json',
+            contentType: 'application/json',
+            data: 
+            JSON.stringify({
+                // addOrUpdate: 0, //0 is add, 1 is update, 2 is delete, 3 is get
                 categoryId: newBoxId, // gotta make function for ID
                 userId: 1,
                 writtenText: JSON.stringify(window.post),
                 boxPrevious: lastBox.textBoxId,
                 boxNext: undefined,
                 title: undefined
-            });
+            }),
+        });
 
         if(lastBox.boxPrevious == null || lastBox.boxPrevious == undefined){
-            $.post("/api/textBoxes",
-            {
-                addOrUpdate: 1, //0 is add, 1 is update, 2 is delete, 3 is get
-                textBoxId: lastBox.textBoxId,
-                categoryId: lastBox.textBoxId, // gotta make function for ID
-                userId: 1,
-                writtenText: lastBox.writtenText,
-                boxPrevious: undefined,
-                boxNext: newBoxId,
-                title: lastBox.title
+            $.ajax({
+                async: false,
+                type: "PUT",
+                url: "/api/textBoxes",
+                dataType: 'json',
+                contentType: 'application/json',
+                data: 
+                JSON.stringify({
+                    // addOrUpdate: 1, //0 is add, 1 is update, 2 is delete, 3 is get
+                    textBoxId: lastBox.textBoxId,
+                    categoryId: lastBox.textBoxId, // gotta make function for ID
+                    userId: 1,
+                    writtenText: lastBox.writtenText,
+                    boxPrevious: undefined,
+                    boxNext: newBoxId,
+                    title: lastBox.title
+                }),
             });
 
         }
         else{
-            $.post("/api/textBoxes",
-            {
-                addOrUpdate: 1, //0 is add, 1 is update, 2 is delete, 3 is get
-                textBoxId: lastBox.textBoxId,
-                categoryId: lastBox.textBoxId, // gotta make function for ID
-                userId: 1,
-                writtenText: lastBox.writtenText,
-                boxPrevious: lastBox.boxPrevious,
-                boxNext: newBoxId,
-                title: undefined
+            $.ajax({
+                async: false,
+                type: "PUT",
+                url: "/api/textBoxes",
+                dataType: 'json',
+                contentType: 'application/json',
+                data: 
+                JSON.stringify({
+                    // addOrUpdate: 1, //0 is add, 1 is update, 2 is delete, 3 is get
+                    textBoxId: lastBox.textBoxId,
+                    categoryId: lastBox.textBoxId, // gotta make function for ID
+                    userId: 1,
+                    writtenText: lastBox.writtenText,
+                    boxPrevious: lastBox.boxPrevious,
+                    boxNext: newBoxId,
+                    title: undefined
+                })
             });
 
         }
@@ -290,9 +311,9 @@
         if(previousBox.boxPrevious == null || previousBox.boxPrevious == undefined){
             if(currentBox.boxNext == null || currentBox.boxNext == undefined){
                 alert("step 1");
-                $.post("/api/textBoxes",
+                $.put("/api/textBoxes",
                 {
-                    addOrUpdate: 1, //0 is add, 1 is update, 2 is delete, 3 is get
+                    // addOrUpdate: 1, //0 is add, 1 is update, 2 is delete, 3 is get
                     textBoxId: previousBox.textBoxId,
                     categoryId: previousBox.textBoxId, // gotta make function for ID
                     userId: 1,
@@ -305,9 +326,9 @@
             else{
                 alert("step 2");
                 
-                $.post("/api/textBoxes",
+                $.put("/api/textBoxes",
                 {
-                    addOrUpdate: 1, //0 is add, 1 is update, 2 is delete, 3 is get
+                    // addOrUpdate: 1, //0 is add, 1 is update, 2 is delete, 3 is get
                     textBoxId: previousBox.textBoxId,
                     categoryId: previousBox.textBoxId, // gotta make function for ID
                     userId: 1,
@@ -323,29 +344,29 @@
         else{
             if(currentBox.boxNext == null || currentBox.boxNext == undefined){
                 alert("step 3");
-                $.post("/api/textBoxes",
+                $.put("/api/textBoxes",
                 {
-                addOrUpdate: 1, //0 is add, 1 is update, 2 is delete, 3 is get
-                textBoxId: previousBox.textBoxId,
-                categoryId: previousBox.textBoxId, // gotta make function for ID
-                userId: 1,
-                writtenText: previousBox.writtenText,
-                boxPrevious: previousBox.boxPrevious,
-                boxNext: undefined
+                    // addOrUpdate: 1, //0 is add, 1 is update, 2 is delete, 3 is get
+                    textBoxId: previousBox.textBoxId,
+                    categoryId: previousBox.textBoxId, // gotta make function for ID
+                    userId: 1,
+                    writtenText: previousBox.writtenText,
+                    boxPrevious: previousBox.boxPrevious,
+                    boxNext: undefined
                 });
 
             }
             else{
                 alert("step 4");
-                $.post("/api/textBoxes",
+                $.put("/api/textBoxes",
                 {
-                addOrUpdate: 1, //0 is add, 1 is update, 2 is delete, 3 is get
-                textBoxId: previousBox.textBoxId,
-                categoryId: previousBox.textBoxId, // gotta make function for ID
-                userId: 1,
-                writtenText: previousBox.writtenText,
-                boxPrevious: previousBox.boxPrevious,
-                boxNext: currentBox.boxNext
+                    // addOrUpdate: 1, //0 is add, 1 is update, 2 is delete, 3 is get
+                    textBoxId: previousBox.textBoxId,
+                    categoryId: previousBox.textBoxId, // gotta make function for ID
+                    userId: 1,
+                    writtenText: previousBox.writtenText,
+                    boxPrevious: previousBox.boxPrevious,
+                    boxNext: currentBox.boxNext
                 });
 
             }
@@ -353,9 +374,9 @@
         }
         if(!(currentBox.boxNext == null || currentBox.boxNext == undefined)){
             alert("step 5");
-            $.post("/api/textBoxes",
+            $.put("/api/textBoxes",
             {
-                addOrUpdate: 1, //0 is add, 1 is update, 2 is delete, 3 is get
+                // addOrUpdate: 1, //0 is add, 1 is update, 2 is delete, 3 is get
                 textBoxId: currentBox.boxNext,
                 categoryId: currentBox.boxNext.categoryId, // gotta make function for ID
                 userId: 1,
@@ -368,11 +389,11 @@
 
         
 
-        $.post("/api/textBoxes",
+        $.delete("/api/textBoxes",
         {
-            addOrUpdate: 2, //0 is add, 1 is update, 2 is delete, 3 is get
-                textBoxId: currentBox.textBoxId,
-                userId: 1,
+            // addOrUpdate: 2, //0 is add, 1 is update, 2 is delete, 3 is get
+            textBoxId: currentBox.textBoxId,
+            userId: 1,
         },
         function(data, status){
         });
@@ -412,15 +433,15 @@
 
         var ret = [];
         $.ajax({
-        url: "/api/textBoxes",
-        type: 'get',
-   
-        async: false,
-        success: function(data) {
-            console.log(data);
-            var questions = getQuestions(data);
-            ret = getQuestionsAndAnswers(data, questions);
-        } 
+            url: "/api/textBoxes",
+            type: 'get',
+    
+            async: false,
+            success: function(data) {
+                console.log(data);
+                var questions = getQuestions(data);
+                ret = getQuestionsAndAnswers(data, questions);
+            } 
         });
         return ret;
 

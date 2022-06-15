@@ -2,7 +2,7 @@
 
 const boom = require("@hapi/boom");
 const utils = require("./utils");
-const sql = require("mysql");
+const sql = require("mysql2");
 const config = require("../../config");
 
 module.exports.register = async server => {
@@ -22,15 +22,15 @@ module.exports.register = async server => {
             try {
               const connection = sql.createConnection({
                 host: config.sql.server,
-                port: config.sql.port,
+                //port: config.sql.port,
                 user: config.sql.user,
                 password: config.sql.password,
-                database: config.sql.user
+                database: config.sql.database //config.sql.user
             });
         
             connection.on('error', function(err) {
               console.log(err);
-          });
+            });
               
 
                 return new Promise((resolve, reject) => {
@@ -39,7 +39,7 @@ module.exports.register = async server => {
                         return reject(error)
                       }
                 
-                      console.log(results);
+                      // console.log(results);
                 
                       return resolve(results);
                     });
@@ -80,13 +80,13 @@ module.exports.register = async server => {
                 port: config.sql.port,
                 user: config.sql.user,
                 password: config.sql.password,
-                database: config.sql.user
+                database: config.sql.database
             });
         
             connection.on('error', function(err) {
               console.log(err);
           });
-                console.log(request.payload);
+                //console.log(request.payload);
                 
                 if(request.payload.addOrUpdate == 0){ //don't make this triple
 
@@ -102,7 +102,7 @@ module.exports.register = async server => {
                                   return reject(error);
                                 }
                           
-                                console.log(results);
+                                //console.log(results);
           
                   
                                 return resolve(results);
@@ -116,7 +116,7 @@ module.exports.register = async server => {
                                   return reject(error);
                                 }
                           
-                                console.log(results);
+                                //console.log(results);
           
                   
                                 return resolve(results);
@@ -131,7 +131,7 @@ module.exports.register = async server => {
                                   return reject(error);
                                 }
                           
-                                console.log(results);
+                                //console.log(results);
           
                   
                                 return resolve(results);
@@ -145,7 +145,7 @@ module.exports.register = async server => {
                                   return reject(error);
                                 }
                           
-                                console.log(results);
+                                //console.log(results);
           
                   
                                 return resolve(results);
@@ -174,7 +174,7 @@ module.exports.register = async server => {
                                   return reject(error)
                                 }
                           
-                                console.log(results);
+                                //console.log(results);
                           
                                 return resolve(results);
                               })
@@ -186,7 +186,7 @@ module.exports.register = async server => {
                                   return reject(error)
                                 }
                           
-                                console.log(results);
+                                //console.log(results);
                           
                                 return resolve(results);
                               })
@@ -199,7 +199,7 @@ module.exports.register = async server => {
                                   return reject(error)
                                 }
                           
-                                console.log(results);
+                                //console.log(results);
                           
                                 return resolve(results);
                               })
@@ -211,7 +211,7 @@ module.exports.register = async server => {
                                   return reject(error)
                                 }
                           
-                                console.log(results);
+                                //console.log(results);
                           
                                 return resolve(results);
                               })
@@ -234,7 +234,7 @@ module.exports.register = async server => {
                             return reject(error)
                           }
                     
-                          console.log(results);
+                          //console.log(results);
                     
                           return resolve(results);
                         })
@@ -250,7 +250,7 @@ module.exports.register = async server => {
                             return reject(error)
                           }
                     
-                          console.log(results);
+                          //console.log(results);
                     
                           return resolve(results);
                         })

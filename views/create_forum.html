@@ -213,7 +213,7 @@
     
         $.post("/api/textBoxes", 
         {
-            addOrUpdate: 0, //0 is add, 1 is update, 2 is delete, 3 is get
+            // addOrUpdate: 0, //0 is add, 1 is update, 2 is delete, 3 is get
             categoryId: $('#categoryIdPost').val(),
             userId: 1,
             writtenText: JSON.stringify(window.post),
@@ -229,9 +229,9 @@
         $('#updateText').click(function () {
         window.post2 = quill2.getContents();
 
-        $.post("/api/textBoxes",
+        $.put("/api/textBoxes",
         {
-            addOrUpdate: 1, //0 is add, 1 is update, 2 is delete, 3 is get
+            // addOrUpdate: 1, //0 is add, 1 is update, 2 is delete, 3 is get
             textBoxId: $('#textBoxId').val(),
             userId: $('#userId').val(),
             categoryId: $('#categoryId').val(),
@@ -243,9 +243,9 @@
     });
 
     $('#deleteText').click(function () {
-        $.post("/api/textBoxes",
+        $.delete("/api/textBoxes",
         {
-            addOrUpdate: 2, //0 is add, 1 is update, 2 is delete, 3 is get
+            // addOrUpdate: 2, //0 is add, 1 is update, 2 is delete, 3 is get
             textBoxId: $('#textBoxIdDelete').val(),
             userId: $('#userIdDelete').val(),
         },
@@ -256,9 +256,9 @@
 
     });
     $('#getText').click(function () {
-        $.post("/api/textBoxes",
+        $.get("/api/textBoxes/post",
         {
-            addOrUpdate: 3, //0 is add, 1 is update, 2 is delete, 3 is get
+            // addOrUpdate: 3, //0 is add, 1 is update, 2 is delete, 3 is get
             textBoxId: $('#textBoxIdGet').val(),
             userId: $('#userIdGet').val(),
         },

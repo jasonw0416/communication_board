@@ -177,16 +177,18 @@
             async: false,
             type: "POST",
             url: "/api/textBoxes",
+            dataType: 'json',
+            contentType: 'application/json',
             data: 
-            {
-                addOrUpdate: 0, //0 is add, 1 is update, 2 is delete, 3 is get
+            JSON.stringify({
+                // addOrUpdate: 0, //0 is add, 1 is update, 2 is delete, 3 is get
                 categoryId: -1,
                 userId: 1,
                 writtenText: JSON.stringify(window.post),
                 boxPrevious: undefined,
                 boxNext: undefined,
                 title: JSON.stringify(quill2.getContents())
-            },
+            }),
         });
 
         data2d = getDatabase();
