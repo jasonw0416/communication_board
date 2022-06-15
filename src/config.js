@@ -27,14 +27,14 @@ assert( SQL_PASSWORD, "SQL_PASSWORD configuration is required." );*/
 
 
 module.exports = {
-    port: PORT,
-    host: HOST_URL,
+    port: PORT || 3000,
+    host: HOST_URL || 'localhost',
     sql: {
-        server: SQL_SERVER,
-        port: SQL_PORT,
-        database: SQL_DATABASE,
-        user: SQL_USER,
-        password: SQL_PASSWORD,
+        server: SQL_SERVER || 'localhost', 
+        port: SQL_PORT || '3306',
+        database: SQL_DATABASE || 'posts', 
+        user: SQL_USER || 'root', 
+        password: SQL_PASSWORD || 'password', 
         options:{
             encrypt: sqlEncrypt,
             enableArithAbort: true,
