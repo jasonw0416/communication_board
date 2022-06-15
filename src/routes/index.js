@@ -1,68 +1,148 @@
 "use strict";
 
-const api = require("./api");
-const path = require("path");
-const inert = require('@hapi/inert');
+const config = require("../config");
+const sql = require("mysql2");
+const fs = require("fs-extra");
+
+const express = require('express');
+const path = require('path');
+const router = express.Router();
+
+const db = require("../db");
+const postsdb = require("../db");
 
 
-module.exports.register = async server => {
+const filePath = path.join(process.cwd(), "src", "data", "textBoxes");
+const files = fs.readdirSync(filePath);
+const sqlFiles = files.filter(f => f.endsWith(".sql"));
+const sqlQueries = {};
+for (const sqlFile of sqlFiles){
+    const query = fs.readFileSync(path.join(filePath, sqlFile), {encoding: "UTF-8"});
+    sqlQueries[sqlFile.replace(".sql", "")] = query;
+}
 
-    await api.register(server);
 
-    server.route({
-        method:"GET",
-        path:"/",
-        handler: async (request, h) => {
-            return h.file('./views/forum.html');
+router.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname+'/../../views/forum.html'));
+});
+
+router.get('/create_post.html', (req, res) => {
+    res.sendFile(path.join(__dirname+'/../../views/create_post.html'));
+});
+
+router.get('/create_forum.html', (req, res) => {
+    res.sendFile(path.join(__dirname+'/../../views/create_forum.html'));
+});
+
+router.get('/public/css/main.css', (req, res) => {
+    res.sendFile(path.join(__dirname+'/../../public/css/main.css'));
+});
+
+router.get('/images/chemistry.jpeg', (req, res) => {
+    res.sendFile(path.join(__dirname+'/../../images/chemistry.jpeg'));
+});
+
+router.get('/images/icon.png', (req, res) => {
+    res.sendFile(path.join(__dirname+'/../../images/icon.png'));
+});
+
+router.get('/postQues.html', (req, res) => {
+    res.sendFile(path.join(__dirname+'/../../views/postQues.html'));
+});
+
+router.get('/api/textBoxes', async (req, res) => {
+    try {
+        let results = await db.all();
+        res.json(results);
+    }
+    catch (err) {
+        console.log(err);
+        res.sendStatus(500);
+    }
+});
+
+router.post('/api/textBoxes', async (request, res) => {
+    try {
+        // console.log(JSON.parse(JSON.stringify(request.body)));
+        
+        const {categoryId, userId, writtenText, boxPrevious, boxNext, title} = request.body;
+
+        if (boxPrevious == undefined && boxNext == undefined){
+            let results = await db.create(parseInt(categoryId), parseInt(userId), writtenText, undefined, undefined, title);
+            res.json(results); 
         }
-    });
-
-    server.route({
-        method:"GET",
-        path:"/create_post2.html",
-        handler: async (request, h) => {
-            return h.file('./views/create_post2.html');
+        else if(boxPrevious == undefined){
+            let results = await db.create(parseInt(categoryId), parseInt(userId), writtenText, undefined, parseInt(boxNext), title);
+            res.json(results); 
+            
         }
-    });
-
-    server.route({
-        method:"GET",
-        path:"/create_forum.html",
-        handler: async (request, h) => {
-            return h.file('./views/create_forum.html');
+        else if(boxNext == undefined){
+            let results = await db.create(parseInt(categoryId), parseInt(userId), writtenText, parseInt(boxPrevious), undefined, title);
+            res.json(results); 
         }
-    });
-
-    server.route({
-        method: 'GET',
-        path: '/public/css/main.css',
-        handler: async (request, h) => {
-            return h.file('./public/css/main.css');
+        else{
+            let results = await db.create(parseInt(categoryId), parseInt(userId), writtenText, parseInt(boxPrevious), parseInt(boxNext), title);
+            res.json(results); 
         }
-    });
 
-    server.route({
-        method: 'GET',
-        path: '/images/chemistry.jpeg',
-        handler: async (request, h) => {
-            return h.file('./images/chemistry.jpeg');
+    } catch (err) {
+        console.log(err);
+        res.sendStatus(500);
+    }
+});
+
+router.put('/api/textBoxes', async (request, res) => {
+    try {
+        const {textBoxId, userId, categoryId, writtenText, boxNext, boxPrevious, title} = request.body;
+
+        if(boxPrevious == undefined && boxNext == undefined){
+            let results = await db.update(parseInt(categoryId), writtenText, undefined, undefined, title, parseInt(textBoxId), parseInt(userId));
+            res.json(results);
         }
-    });
-
-    server.route({
-        method: 'GET',
-        path: '/images/icon.png',
-        handler: async (request, h) => {
-            return h.file('./images/icon.png');
+        else if(boxNext == undefined){
+            let results = await db.update(parseInt(categoryId), writtenText, undefined, parseInt(boxPrevious), title, parseInt(textBoxId), parseInt(userId));
+            res.json(results);
         }
-    });
-
-    server.route({
-        method: 'GET',
-        path: '/postQues.html',
-        handler: async (request, h) => {
-            return h.file('./views/postQues.html');
+        else if(boxPrevious == undefined){
+            let results = await db.update(parseInt(categoryId), writtenText, parseInt(boxNext), undefined, title, parseInt(textBoxId), parseInt(userId));
+            res.json(results);
         }
-    });
+        else{
+            let results = await db.update(parseInt(categoryId), writtenText, parseInt(boxNext), parseInt(boxPrevious), title, parseInt(textBoxId), parseInt(userId));
+            res.json(results);
+        }
 
-};
+    } catch (err) {
+        console.log(err);
+        res.sendStatus(500);
+    }
+
+});
+
+router.delete('/api/textBoxes', async (request, res) => {
+    try {
+        const {textBoxId, userId} = request.body;
+
+        let results = await postsdb.delete(parseInt(textBoxId), undefined);
+        res.json(results);
+    } catch (err) {
+        console.log(err);
+        res.sendStatus(500);
+    }
+
+});
+
+router.get('api/textBoxes/post', async (request, res) => {
+    try {
+        const {textBoxId, userId} = request.body;
+
+        let results = await postsdb.adminRead(parseInt(textBoxId), undefined);
+        res.json(results);
+    } catch (err) {
+        console.log(err);
+        res.sendStatus(500);
+    }
+});
+
+
+module.exports = router;
