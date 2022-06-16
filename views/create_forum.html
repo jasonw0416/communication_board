@@ -210,62 +210,95 @@
 
     $('#postText').click(function () {
         window.post = quill.getContents();
-    
-        $.post("/api/textBoxes", 
-        {
-            // addOrUpdate: 0, //0 is add, 1 is update, 2 is delete, 3 is get
-            categoryId: $('#categoryIdPost').val(),
-            userId: 1,
-            writtenText: JSON.stringify(window.post),
-            boxPrevious: null,
-            boxNext: null
-        },
-        function(data, status){
+
+        try {
+            $.ajax({
+                async: false,
+                type: "POST",
+                url: "/api/textBoxes",
+                dataType: 'json',
+                contentType: 'application/json',
+                data: 
+                JSON.stringify({
+                // addOrUpdate: 0, //0 is add, 1 is update, 2 is delete, 3 is get
+                categoryId: $('#categoryIdPost').val(),
+                userId: 1,
+                writtenText: JSON.stringify(window.post),
+                boxPrevious: null,
+                boxNext: null})
+            });
             alert("success!");
-        });
+        } catch (error) {
+            alert(error);
+        }
+    
     });
 
 
-        $('#updateText').click(function () {
+    $('#updateText').click(function () {
         window.post2 = quill2.getContents();
 
-        $.put("/api/textBoxes",
-        {
-            // addOrUpdate: 1, //0 is add, 1 is update, 2 is delete, 3 is get
-            textBoxId: $('#textBoxId').val(),
-            userId: $('#userId').val(),
-            categoryId: $('#categoryId').val(),
-            writtenText: JSON.stringify(window.post2),
-        },
-        function(data, status){
+        try {
+            $.ajax({
+                async: false,
+                type: "PUT",
+                url: "/api/textBoxes",
+                dataType: 'json',
+                contentType: 'application/json',
+                data: 
+                JSON.stringify({
+                // addOrUpdate: 1, //0 is add, 1 is update, 2 is delete, 3 is get
+                textBoxId: $('#textBoxId').val(),
+                userId: $('#userId').val(),
+                categoryId: $('#categoryId').val(),
+                writtenText: JSON.stringify(window.post2),})
+            });
             alert("success!");
-        });
+        } catch (error) {
+            alert(error);
+        }
     });
 
     $('#deleteText').click(function () {
-        $.delete("/api/textBoxes",
-        {
-            // addOrUpdate: 2, //0 is add, 1 is update, 2 is delete, 3 is get
-            textBoxId: $('#textBoxIdDelete').val(),
-            userId: $('#userIdDelete').val(),
-        },
-        function(data, status){
-    alert("success!");
-        });
+
+        try {
+            $.ajax({
+                async: false,
+                type: "DELETE",
+                url: "/api/textBoxes",
+                dataType: 'json',
+                contentType: 'application/json',
+                data: 
+                JSON.stringify({
+                // addOrUpdate: 2, //0 is add, 1 is update, 2 is delete, 3 is get
+                textBoxId: $('#textBoxIdDelete').val(),
+                userId: $('#userIdDelete').val(),})
+            });
+            alert("success!");
+        } catch (error) {
+            alert(error);
+        }
 
 
     });
     $('#getText').click(function () {
-        $.get("/api/textBoxes/post",
-        {
-            // addOrUpdate: 3, //0 is add, 1 is update, 2 is delete, 3 is get
-            textBoxId: $('#textBoxIdGet').val(),
-            userId: $('#userIdGet').val(),
-        },
-        function(data, status){
-            console.log(data);
-            quill3.setContents(JSON.parse(data[0].writtenText));
-        });
+        try {
+            $.ajax({
+                async: false,
+                type: "GET",
+                url: "/api/textBoxes/post",
+                dataType: 'json',
+                contentType: 'application/json',
+                data: 
+                JSON.stringify({
+                // addOrUpdate: 3, //0 is add, 1 is update, 2 is delete, 3 is get
+                textBoxId: $('#textBoxIdGet').val(),
+                userId: $('#userIdGet').val(),})
+            });
+            alert("success!");
+        } catch (error) {
+            alert(error);
+        }
 
 
     });

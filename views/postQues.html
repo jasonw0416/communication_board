@@ -17,45 +17,13 @@
     
     <nav class="navbar navbar-expand-lg navbar-light color-override">
         <a class="navbar-brand text-override" href="#">  Chemiqualancer Forum Page</a>
-        <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>-->
+        
         <nav class="navbar-collapse" id="navbarNavAltMarkup">
             <nav class="navbar-nav">
                 <a class="nav-link active text-override" href="/">Home <span class="sr-only"></span></a>
                 <a class="nav-link active text-override" href="/postQues.html">Post <span class="sr-only"></span></a>
                 <a class="nav-link active text-override" href="https://chemiqualancer.herokuapp.com//">Equation Balancer <span class="sr-only"></span></a>
-                <!--<li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-override" href="#" style="color:black" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
-                        Chapters
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="#" style="color:black;">Chapter 1</a></li>
-                        <li><a class="dropdown-item" href="#" style="color:black;">Chapter 2</a></li>
-                        <li><a class="dropdown-item" href="#" style="color:black;">Chapter 3</a></li>
-                        <li><a class="dropdown-item" href="#" style="color:black;">Chapter 4</a></li>
-                        <li><a class="dropdown-item" href="#" style="color:black;">Chapter 5</a></li>
-                        <li><a class="dropdown-item" href="#" style="color:black;">Chapter 6</a></li>
-                        <li><a class="dropdown-item" href="#" style="color:black;">Chapter 7</a></li>
-                        <li><a class="dropdown-item" href="#" style="color:black;">Chapter 8</a></li>
-                        <li><a class="dropdown-item" href="#" style="color:black;">Chapter 9</a></li>
-                        <li><a class="dropdown-item" href="#" style="color:black;">Chapter 10</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-override" href="#" style="color:black;" id="navbarDropdownMenuLink2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Topics
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="#" style="color:black;">Acids and Bases</a></li>
-                        <li><a class="dropdown-item" href="#" style="color:black;">Molecules, Compounds</a></li>
-                        <li><a class="dropdown-item" href="#" style="color:black;">Chemical Reactions</a></li>
-                        <li><a class="dropdown-item" href="#" style="color:black;">Thermochemistry</a></li>
-                        <li><a class="dropdown-item" href="#" style="color:black;">Periodic Table</a></li>
-                        <li><a class="dropdown-item" href="#" style="color:black;">Chemical Bonding</a></li>
-                        <li><a class="dropdown-item" href="#" style="color:black;">Matter and States</a></li>
-                    </ul>
-                </li>-->
+                
             </nav>
         </nav>
     </nav>
@@ -104,22 +72,7 @@
         <button id="postText" class="btn btn-primary">Post</button>
     </div>
     <div class="col-sm-6">
-        <!--<div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                Select Category
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="#">Acids and Bases</a></li>
-                <li><a class="dropdown-item" href="#">Molecules and Compounds</a></li>
-                <li><a class="dropdown-item" href="#">Chemical Reactions</a></li>
-                <li><a class="dropdown-item" href="#">Thermochemistry</a></li>
-                <li><a class="dropdown-item" href="#">Periodic Table</a></li>
-                <li><a class="dropdown-item" href="#">Chemical Bonding</a></li>
-                <li><a class="dropdown-item" href="#">Matter and States</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Other</a></li>
-            </ul>
-        </div>-->
+        
     </div>
     
 
@@ -129,9 +82,6 @@
 </body>
 
 <script>
-
-    data2d = getDatabase();
-
 
     $( document ).ready(function() {
         $('.dropdown').each(function (key, dropdown) {
@@ -176,23 +126,20 @@
         $.ajax({
             async: false,
             type: "POST",
-            url: "/api/textBoxes",
+            url: "/api/questions",
             dataType: 'json',
             contentType: 'application/json',
             data: 
             JSON.stringify({
-                // addOrUpdate: 0, //0 is add, 1 is update, 2 is delete, 3 is get
-                categoryId: -1,
-                userId: 1,
+                userId: 0,
+                categoryId: 0,
+                title: JSON.stringify(quill2.getContents()),
                 writtenText: JSON.stringify(window.post),
-                boxPrevious: undefined,
-                boxNext: undefined,
-                title: JSON.stringify(quill2.getContents())
             }),
+            success: function(result) {
+                window.location.replace("/create_post.html#" + result.insertId);
+            }
         });
-
-        data2d = getDatabase();
-        window.location.replace("/create_post.html#" + (data2d.length - 1));
     });
 
     $('#title').click(function (){
@@ -200,55 +147,6 @@
             quill2.setContents({ops:[{insert:""}]});
         }
     });
-
-
-    function getDatabase () {
-
-        var ret = [];
-        $.ajax({
-            url: "/api/textBoxes",
-            type: 'get',
-
-            async: false,
-            success: function(data) {
-                var questions = getQuestions(data);
-                ret = getQuestionsAndAnswers(data, questions);
-            }
-        });
-        return ret;
-
-
-    }
-
-    function getQuestions(data){
-
-        var questions = [];
-        for(var i = 0; i < data.length; i++){
-            if(data[i].boxPrevious == null){
-                questions.push(data[i]);
-            }
-        }
-        return questions;
-
-    }
-
-    function getQuestionsAndAnswers(data, questions){
-        var ret = [];
-        for(var i = 0; i < questions.length; i++){
-            var answers = [];
-            answers.push(questions[i]);
-            var currentBox = questions[i];
-            while(currentBox.boxNext != null){
-                answers.push(data[currentBox.boxNext - 1]);
-                currentBox = data[currentBox.boxNext - 1];
-                if(currentBox == null){
-                    break;
-                }
-            }
-            ret.push(answers);
-        }
-        return ret;
-    }
 
 </script>
 

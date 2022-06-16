@@ -9,18 +9,6 @@ const path = require('path');
 const router = express.Router();
 
 const db = require("../db");
-const postsdb = require("../db");
-
-
-const filePath = path.join(process.cwd(), "src", "data", "textBoxes");
-const files = fs.readdirSync(filePath);
-const sqlFiles = files.filter(f => f.endsWith(".sql"));
-const sqlQueries = {};
-for (const sqlFile of sqlFiles){
-    const query = fs.readFileSync(path.join(filePath, sqlFile), {encoding: "UTF-8"});
-    sqlQueries[sqlFile.replace(".sql", "")] = query;
-}
-
 
 router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname+'/../../views/forum.html'));
@@ -123,7 +111,7 @@ router.delete('/api/textBoxes', async (request, res) => {
     try {
         const {textBoxId, userId} = request.body;
 
-        let results = await postsdb.delete(parseInt(textBoxId), undefined);
+        let results = await db.delete(parseInt(textBoxId), undefined);
         res.json(results);
     } catch (err) {
         console.log(err);
@@ -136,9 +124,72 @@ router.get('api/textBoxes/post', async (request, res) => {
     try {
         const {textBoxId, userId} = request.body;
 
-        let results = await postsdb.adminRead(parseInt(textBoxId), undefined);
+        let results = await db.adminRead(parseInt(textBoxId), undefined);
         res.json(results);
     } catch (err) {
+        console.log(err);
+        res.sendStatus(500);
+    }
+});
+
+router.get('/api/questions', async (request, res) => {
+    try {
+        let results = await db.questionsAll();
+        res.json(results);
+    }
+    catch (err) {
+        console.log(err);
+        res.sendStatus(500);
+    }
+});
+
+router.get('/api/single-question/:questionId', async (request, res) => {
+    try {
+        const questionId = request.params.questionId;
+
+        let results = await db.readSingleQuestion(parseInt(questionId));
+        res.json(results);
+    }
+    catch (err) {
+        console.log(err);
+        res.sendStatus(500);
+    }
+});
+
+router.post('/api/questions', async (request, res) => {
+    try {
+        const {userId, categoryId, title, writtenText} = request.body;
+
+        let results = await db.createQuestion(parseInt(userId), parseInt(categoryId), title, writtenText);
+        res.json(results);
+    }
+    catch (err) {
+        console.log(err);
+        res.sendStatus(500);
+    }
+});
+
+router.get('/api/answer/:questionId', async (request, res) => {
+    try {
+        const questionId = request.params.questionId;
+
+        let results = await db.readAnswer(parseInt(questionId));
+        res.json(results);
+    }
+    catch (err) {
+        console.log(err);
+        res.sendStatus(500);
+    }
+});
+
+router.post('/api/answer', async (request, res) => {
+    try {
+        const {questionId, userId, writtenText} = request.body;
+
+        let results = await db.createAnswer(parseInt(questionId), parseInt(userId), writtenText);
+        res.json(results);
+    }
+    catch (err) {
         console.log(err);
         res.sendStatus(500);
     }

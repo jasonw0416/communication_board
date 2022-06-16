@@ -18,6 +18,25 @@ for (const sqlFile of sqlFiles){
     sqlQueries[sqlFile.replace(".sql", "")] = query;
 }
 
+
+const filePath1 = path.join(process.cwd(), "src", "data", "questions");
+const files1 = fs.readdirSync(filePath1);
+const sqlFiles1 = files1.filter(f => f.endsWith(".sql"));
+const questionQueries = {};
+for (const sqlFile of sqlFiles1){
+    const query = fs.readFileSync(path.join(filePath1, sqlFile), {encoding: "UTF-8"});
+    questionQueries[sqlFile.replace(".sql", "")] = query;
+}
+
+const filePath2 = path.join(process.cwd(), "src", "data", "answers");
+const files2 = fs.readdirSync(filePath2);
+const sqlFiles2 = files2.filter(f => f.endsWith(".sql"));
+const answerQueries = {};
+for (const sqlFile of sqlFiles2){
+    const query = fs.readFileSync(path.join(filePath2, sqlFile), {encoding: "UTF-8"});
+    answerQueries[sqlFile.replace(".sql", "")] = query;
+}
+
 const connection = sql.createConnection({
     host: config.sql.server,
     //port: config.sql.port,
@@ -78,6 +97,52 @@ postsdb.adminRead = (textBoxId, userId) => {
 
             return resolve(results);
         })
+    })
+}
+
+postsdb.questionsAll = () => {
+    return new Promise((resolve, reject) => {
+        connection.query(questionQueries.readQuestion, (error, results) => {
+            if (error) return reject(error);
+            return resolve(results);
+        });
+    })
+}
+
+postsdb.readSingleQuestion = (questionId) => {
+    return new Promise((resolve, reject) => {
+        connection.query(questionQueries.readSingleQuestion, [questionId], (error, results) => {
+            if (error) return reject(error);
+            return resolve(results);
+        });
+    })
+}
+
+postsdb.createQuestion = (userId, categoryId, title, writtenText) => {
+    return new Promise ((resolve, reject) => {
+        connection.query(questionQueries.createQuestion, [userId, categoryId, title, writtenText], function (error, results, fields){
+            if (error) return reject(error)
+
+            return resolve(results);
+        });
+    })
+}
+
+postsdb.readAnswer = (questionId) => {
+    return new Promise((resolve, reject) => {
+        connection.query(answerQueries.readAnswer, [questionId], (error, results) => {
+            if (error) return reject(error);
+            return resolve(results);
+        });
+    })
+}
+
+postsdb.createAnswer = (questionId, userId, writtenText) => {
+    return new Promise((resolve, reject) => {
+        connection.query(answerQueries.createAnswer, [questionId, userId, writtenText], (error, results) => {
+            if (error) return reject(error);
+            return resolve(results);
+        });
     })
 }
 

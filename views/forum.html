@@ -112,10 +112,10 @@
                     Results Per Page: 10
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" onclick="loadEntries(data2d.length - 1, 5); changeDropDownButton(5);">5</a></li>
-                    <li><a class="dropdown-item" onclick="loadEntries(data2d.length - 1, 10); changeDropDownButton(10);">10</a></li>
-                    <li><a class="dropdown-item" onclick="loadEntries(data2d.length - 1, 15); changeDropDownButton(15);">15</a></li>
-                    <li><a class="dropdown-item" onclick="loadEntries(data2d.length - 1, 20); changeDropDownButton(20);">20</a></li>
+                    <li><a class="dropdown-item" onclick="/*loadEntries(data2d.length - 1, 5);*/ changeDropDownButton(5);">5</a></li>
+                    <li><a class="dropdown-item" onclick="/*loadEntries(data2d.length - 1, 10);*/ changeDropDownButton(10);">10</a></li>
+                    <li><a class="dropdown-item" onclick="/*loadEntries(data2d.length - 1, 15);*/ changeDropDownButton(15);">15</a></li>
+                    <li><a class="dropdown-item" onclick="/*loadEntries(data2d.length - 1, 20);*/ changeDropDownButton(20);">20</a></li>
                 </ul>
             </div>
 
@@ -152,20 +152,99 @@
 
     var data2d = [];
 
+    var quills = {};
+    
+    var perPage = 10;
+
     window.onload = function(){
-        data2d = getDatabase();
-        loadEntries(data2d.length - 1, 10);
+        /*data2d = getDatabase();
+        loadEntries(data2d.length - 1, 10);*/
+        data = getQues();
+        displayQuestions(data, perPage);
     }
     
+    function getQues() {
+        var questions = [];
+        $.ajax({
+            url: "/api/questions",
+            type: 'get',
+
+            async: false,
+            success: function(data) {
+                console.log(data);
+                questions = data;
+            }
+        });
+
+        return questions
+    }
+
+    function displayQuestions(questions, displayAmount) {
+        displayAmount = parseInt(displayAmount);
+        document.getElementById('question1').innerHTML = "";
+        document.getElementById('pages').innerHTML = "";
 
 
-    var quills = {};
+        for (let i = questions.length - 1; i > questions.length - 1 - displayAmount && i >= 0; i--){
+            if(i < 0){
+                break;
+            }
+            data = questions[i];
+            var id = "editor" + data.questionId;
+
+            var linkPost = "#" + data.questionId + "\"";
+
+            document.getElementById('question1').innerHTML += `
+                 <a href="./create_post.html` + linkPost + `  class="list-group-item list-group-item-action" id=`+ id + `>` + `</a>
+`;
+
+            var id_for_quills = '#' + id;
+            quills[data.questionId] = new Quill(id_for_quills, {
+                modules: {
+                    toolbar: false
+                },
+                theme: 'snow'
+            });
+
+            quills[data.questionId].enable(false);
+            quills[data.questionId].setContents(JSON.parse(data.title));
+        }
+
+        document.getElementById('pages').innerHTML += `<li class="page-item">
+            <a id="getPrev" href="#" aria-label="Previous">
+                <span class="page-arrow" aria-hidden="true">&laquo;</span>
+            </a>
+        </li>`;
+
+        for(let k = 0; k < (data2d.length/displayAmount); k++){
+            if(k == 0){
+                document.getElementById('pages').innerHTML += `<li class="page-item"><a class="page-link" onclick="loadEntries(data2d.length - ` + 1 + `, ` + displayAmount +`)">` + (k + 1) + `</a></li>`;
+            }
+            else {
+                document.getElementById('pages').innerHTML += `<li class="page-item"><a class="page-link" onclick="loadEntries(data2d.length - ` + (k * displayAmount + 1) + `, ` + displayAmount +`)">` + (k + 1) + `</a></li>`;
+            }
+
+        }
+
+        document.getElementById('pages').innerHTML += `
+        <li class="page-item">
+            <a id="getNext" href="#" aria-label="Next">
+                <span class="page-arrow" aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+        `;
+        if(data2d.length/displayAmount == 0){
+            document.getElementById('pages').innerHTML = "";
+        }
+    }
+
 
     function changeDropDownButton (displayAmount){
+        perPage = displayAmount;
         document.getElementById('dropdownMenuButton1').innerHTML = "Results Per Page: " + String(displayAmount);
     }
 
-    function loadEntries (startIndex, displayAmount){
+    /*function loadEntries (startIndex, displayAmount){
         displayAmount = parseInt(displayAmount);
         document.getElementById('question1').innerHTML = "";
         document.getElementById('pages').innerHTML = "";
@@ -226,11 +305,25 @@
     
 
 
-    }
-
-
+    }*/
 
     function search(){
+        data = getQues();
+
+        newdata = [];
+        for(var i = 0; i < data.length; i++){
+            console.log(document.getElementById("questionAsk").value);
+            if(JSON.parse(data[i].title).ops[0].insert.toLowerCase().search(document.getElementById("questionAsk").value.toLowerCase()) != -1){
+                newdata.push(data[i]);
+            }
+        }
+        console.log(newdata);
+        console.log(document.getElementById("dropdownMenuButton1").innerHTML.trim().split(" ")[document.getElementById("dropdownMenuButton1").innerHTML.trim().split(" ").length - 1]);
+
+        displayQuestions(newdata, perPage);
+    }
+
+    /*function search(){
         data2d = getDatabase();
 
         newdata2d = [];
@@ -247,7 +340,7 @@
 
         data2d = newdata2d;
         loadEntries(data2d.length - 1, document.getElementById("dropdownMenuButton1").innerHTML.trim().split(" ")[document.getElementById("dropdownMenuButton1").innerHTML.trim().split(" ").length - 1]);
-    }
+    }*/
 
 
 
@@ -266,7 +359,6 @@
             if(document.getElementById("questionAsk").value.length != 0){
                 search();
             }
-        
             
             return false;
         }
@@ -277,14 +369,16 @@
     $('#questionAsk').keyup(function (e){
         if(e.keyCode == 8){
             if(document.getElementById("questionAsk").value.length == 0){
-                data2d = getDatabase();
-                loadEntries(data2d.length - 1, document.getElementById("dropdownMenuButton1").innerHTML.trim().split(" ")[document.getElementById("dropdownMenuButton1").innerHTML.trim().split(" ").length - 1]);
+                /*data2d = getDatabase();
+                loadEntries(data2d.length - 1, document.getElementById("dropdownMenuButton1").innerHTML.trim().split(" ")[document.getElementById("dropdownMenuButton1").innerHTML.trim().split(" ").length - 1]);*/
+                data = getQues();
+                displayQuestions(data, perPage);
             }
         }
     });
 
 
-    function getDatabase () {
+    /*function getDatabase () {
         var ret = [];
         $.ajax({
             url: "/api/textBoxes",
@@ -328,7 +422,7 @@
             ret.push(answers);
         }
         return ret;
-    }
+    }*/
 
 </script>
 </html>

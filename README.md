@@ -2,4 +2,6 @@
 
 A Communication Board used for Bialigy
 
-https://communcationboard.herokuapp.com/
+https://communication-forum-express.herokuapp.com
+
+Old Version: https://communcationboard.herokuapp.com/

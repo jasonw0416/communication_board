@@ -128,20 +128,156 @@
 
 
 
-    var data2d = getDatabase();
+    //var data2d = getDatabase();
     
-    console.log(data2d);
+    //console.log(data2d);
 
     var quills = {};
 
     var questionId = parseInt(window.location.hash.substring(1));
 
-    window.onload = function (){
+    window.onload = function(){
+        question = getQuestion();
+        answers = getAnswers();
+        displayEntries(question, answers);
+    }
+
+    function getQuestion() {
+        var question = [];
+        $.ajax({
+            url:"/api/single-question/" + questionId,
+            type: 'get',
+            async: false,
+            success: function(data) {
+                console.log(data);
+                question = data;
+            }
+        });
+
+        return question;
+    }
+
+    function getAnswers() {
+        var answers = [];
+        $.ajax({
+            url: "/api/answer/" + questionId,
+            type: 'get',
+            async: false,
+            success: function(data) {
+                console.log(data);
+                answers = data;
+            }
+        });
+
+        return answers;
+    }
+    
+    function displayEntries(question, answers){
+        document.getElementById('questionDisplay').style.display = "";
+
+        data = question[0];
+
+        data.questionId += 1000;
+
+        //data = {textBoxId: 2, writtenText: "{\"ops\":[{\"insert\":\"HI\\n\"}]}"};
+        // console.log(data);
+        //quill3.setContents(JSON.parse(data.writtenText));
+        var id = "editor" + data.questionId;
+
+        document.getElementById('question1').innerHTML += `
+                    <div class="card qandA">
+                        <div class="card-body">
+
+                            <div class="card-title">
+                                <h1 style="background-color:transparent; margin: 10px 0 20px 0" id="questionTitle">`+ JSON.parse(data.title).ops[0].insert + `</h1>
+                            </div>
+
+                            <div class="" id=`+ id + `>` +
+                                `
+
+                            </div>
+                        </div>
+
+                    </div>`;
+
+
+
+        
+        var id_for_quills = '#' + id;
+        quills[data.questionId] = new Quill(id_for_quills, {
+            modules: {
+                toolbar: false
+            },
+            theme: 'snow'
+        });
+
+        quills[data.questionId].enable(false);
+        quills[data.questionId].setContents(JSON.parse(data.writtenText));
+
+        document.getElementById('answerDisplay').style.display = "";
+
+        for (let i = answers.length - 1; i >= 0; i--){
+            data = answers[i];
+
+            var id = "editor" + data.answerId;
+
+            document.getElementById('answer1').innerHTML += `
+                    <div class="card qandA">
+                        <div class="card-body">
+
+                            <div class="card-title">
+                                <h5 style="background-color:transparent; margin: 10px 0 20px 0">By USER `+ data.userId + `</h5>
+                            </div>
+
+                            <div class="" id=`+ id + `>` +
+                `
+
+                            </div>
+                            <br>
+                            
+
+                        </div>
+
+                    </div>`;
+
+
+            var id_for_quills = '#' + id;
+            quills[data.answerId] = new Quill(id_for_quills, {
+                modules: {
+                    toolbar: false
+                },
+                theme: 'snow'
+            });
+
+            quills[data.answerId].enable(false);
+            quills[data.answerId].setContents(JSON.parse(data.writtenText));
+        }
+    };
+
+    $('#postText').click(function () {
+        window.post = quill.getContents();
+
+        $.ajax({
+            async: false,
+            type: "POST",
+            url: "/api/answer",
+            dataType: 'json',
+            contentType: 'application/json',
+            data: 
+            JSON.stringify({
+                questionId: questionId,
+                userId: 0,
+                writtenText: JSON.stringify(window.post),
+            }),
+        });
+
+        location.reload();
+    });
+
+    /*window.onload = function (){
         document.getElementById('questionDisplay').style.display = "";
 
         data = data2d[questionId][0];
-
-        
 
         //data = {textBoxId: 2, writtenText: "{\"ops\":[{\"insert\":\"HI\\n\"}]}"};
         console.log(data);
@@ -216,10 +352,11 @@
             quills[data.textBoxId].enable(false);
             quills[data.textBoxId].setContents(JSON.parse(data.writtenText));
         }
-    };
+    };*/
 
+    
 
-    $('#postText').click(function () {
+    /*$('#postText').click(function () {
         window.post = quill.getContents();
         lastBox = data2d[questionId][data2d[questionId].length - 1];
         var count = 0;
@@ -297,9 +434,9 @@
         data2d = getDatabase();
 
         location.reload();
-    });
+    });*/
 
-    function deleteTextBox(id) {
+    /*function deleteTextBox(id) {
 
         currentBox = data2d[questionId][id];
         previousBox = data2d[questionId][id - 1];
@@ -404,7 +541,7 @@
         data2d = getDatabase();
 
         location.reload();
-    }
+    }*/
 
     
 
@@ -413,7 +550,7 @@
     // I THINK U SHOULD RELOAD THE PAGE AFTER THIS (RELOAD THE GETDATABASE)
 
 
-    function getLastID () {
+    /*function getLastID () {
         max = 0;
 
 
@@ -477,11 +614,11 @@
             ret.push(answers);
         }
         return ret;
-    }
+    }*/
 
    
 
-    console.log(getDatabase());
+    // console.log(getDatabase());
 
 
 
