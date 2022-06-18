@@ -30,11 +30,11 @@ module.exports = {
     port: PORT || 3000,
     host: HOST_URL || 'localhost',
     sql: {
-        server: SQL_SERVER || 'localhost', //'sql3.freemysqlhosting.net',
+        server: SQL_SERVER || 'localhost', 
         port: SQL_PORT || '3306',
-        database: SQL_DATABASE || 'posts', // 'sql3499953',
-        user: SQL_USER || 'root', //'sql3499953',
-        password: SQL_PASSWORD || 'password', //'W8DZiHerX5',
+        database: SQL_DATABASE || 'posts',
+        user: SQL_USER || 'root', 
+        password: SQL_PASSWORD || 'password', 
         options:{
             encrypt: sqlEncrypt,
             enableArithAbort: true,
