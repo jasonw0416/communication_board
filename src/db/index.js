@@ -6,18 +6,6 @@ const fs = require("fs-extra");
 
 const express = require('express');
 const path = require('path');
-const router = express.Router();
-
-
-const filePath = path.join(process.cwd(), "src", "data", "textBoxes");
-const files = fs.readdirSync(filePath);
-const sqlFiles = files.filter(f => f.endsWith(".sql"));
-const sqlQueries = {};
-for (const sqlFile of sqlFiles){
-    const query = fs.readFileSync(path.join(filePath, sqlFile), {encoding: "UTF-8"});
-    sqlQueries[sqlFile.replace(".sql", "")] = query;
-}
-
 
 const filePath1 = path.join(process.cwd(), "src", "data", "questions");
 const files1 = fs.readdirSync(filePath1);
@@ -51,54 +39,6 @@ connection.on('error', function(err) {
 
 let postsdb = {};
 
-postsdb.all = () => {
-    return new Promise ((resolve, reject) => {
-        connection.query(sqlQueries.getTextBoxes, (error, results) => {
-            if (error) return reject(error);
-            return resolve(results);
-        });
-    })
-}
-
-postsdb.create = (categoryId, userId, writtenText, boxPrevious, boxNext, title) => {
-    return new Promise ((resolve, reject) => {
-        connection.query(sqlQueries.addTextBox, [categoryId, userId, writtenText, boxPrevious, boxNext, title], function (error, results, fields){
-            if (error) return reject(error)
-
-            return resolve(results);
-        });
-    })
-}
-
-postsdb.update = (textBoxId, userId, categoryId, writtenText, boxNext, boxPrevious, title) => {
-    return new Promise((resolve, reject) => {
-        connection.query(sqlQueries.updateTextBox, [textBoxId, userId, categoryId, writtenText, boxNext, boxPrevious, title], function (error, results, fields){
-            if (error) return reject(error)
-
-            return resolve(results);
-        })
-    })
-}
-
-postsdb.delete = (textBoxId, userId) => {
-    return new Promise((resolve, reject) => {
-        connection.query(sqlQueries.deleteTextBox, [textBoxId], function (error, results, fields){
-            if (error) return reject(error)
-
-            return resolve(results);
-        })
-    })
-}
-
-postsdb.adminRead = (textBoxId, userId) => {
-    return new Promise((resolve, reject) => {
-        connection.query(sqlQueries.getTextBoxesPOST, [textBoxId], function (error, results, fields){
-            if (error) return reject(error)
-
-            return resolve(results);
-        })
-    })
-}
 
 postsdb.questionsAll = () => {
     return new Promise((resolve, reject) => {
@@ -120,13 +60,34 @@ postsdb.readSingleQuestion = (questionId) => {
 
 postsdb.createQuestion = (userId, categoryId, title, writtenText) => {
     return new Promise ((resolve, reject) => {
-        connection.query(questionQueries.createQuestion, [userId, categoryId, title, writtenText], function (error, results, fields){
+        connection.query(questionQueries.createQuestion, [userId, categoryId, title, writtenText], function (error, results){
             if (error) return reject(error)
 
             return resolve(results);
         });
     })
 }
+
+postsdb.updateQuestion = (writtenText, questionId) => {
+    return new Promise ((resolve, reject) => {
+        connection.query(questionQueries.updateQuestion, [writtenText, questionId], function (error, results){
+            if (error) return reject(error);
+
+            return resolve(results);
+        })
+    })
+}
+
+postsdb.deleteQuestion = (questionId) => {
+    return new Promise ((resolve, reject) => {
+        connection.query(questionQueries.deleteQuestion, [questionId], function (error, results){
+            if (error) return reject(error);
+
+            return resolve(results);
+        })
+    })
+}
+
 
 postsdb.readAnswer = (questionId) => {
     return new Promise((resolve, reject) => {
@@ -143,6 +104,33 @@ postsdb.createAnswer = (questionId, userId, writtenText) => {
             if (error) return reject(error);
             return resolve(results);
         });
+    })
+}
+
+postsdb.updateAnswer = (writtenText, answerId) => {
+    return new Promise((resolve, reject) => {
+        connection.query(answerQueries.updateAnswer, [writtenText, answerId], (error, results) => {
+            if (error) return reject(error);
+            return resolve(results);
+        })
+    })
+}
+
+postsdb.deleteAnswer = (answerId) => {
+    return new Promise((resolve, reject) => {
+        connection.query(answerQueries.deleteAnswer, [answerId], (error, results) => {
+            if (error) return reject(error);
+            return resolve(results);
+        })
+    })
+}
+
+postsdb.deleteAllAnswer = (questionId) => {
+    return new Promise((resolve, reject) => {
+        connection.query(answerQueries.deleteAllAnswer, [questionId], (error, results) => {
+            if (error) return reject(error);
+            return resolve(results);
+        })
     })
 }
 

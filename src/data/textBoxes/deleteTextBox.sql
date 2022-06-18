@@ -1,2 +1,0 @@
-DELETE textBox
-WHERE textBoxId = ?

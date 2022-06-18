@@ -13,152 +13,74 @@
     <link rel="icon" href="/images/icon.png">
     <script src="https://cdn.quilljs.com/1.3.7/quill.js"></script>
 
-
-
     <nav class="navbar navbar-expand-lg navbar-light color-override">
         <a class="navbar-brand text-override" href="#">  Chemiqualancer Forum Page</a>
-        <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>-->
         <nav class="navbar-collapse" id="navbarNavAltMarkup">
             <nav class="navbar-nav">
                 <a class="nav-link active text-override" href="/">Home <span class="sr-only"></span></a>
                 <a class="nav-link active text-override" href="/postQues.html">Post <span class="sr-only"></span></a>
                 <a class="nav-link active text-override" href="https://chemiqualancer.herokuapp.com//">Equation Balancer <span class="sr-only"></span></a>
-                <!--<li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-override" href="#" style="color:black" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
-                        Chapters
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="#" style="color:black;">Chapter 1</a></li>
-                        <li><a class="dropdown-item" href="#" style="color:black;">Chapter 2</a></li>
-                        <li><a class="dropdown-item" href="#" style="color:black;">Chapter 3</a></li>
-                        <li><a class="dropdown-item" href="#" style="color:black;">Chapter 4</a></li>
-                        <li><a class="dropdown-item" href="#" style="color:black;">Chapter 5</a></li>
-                        <li><a class="dropdown-item" href="#" style="color:black;">Chapter 6</a></li>
-                        <li><a class="dropdown-item" href="#" style="color:black;">Chapter 7</a></li>
-                        <li><a class="dropdown-item" href="#" style="color:black;">Chapter 8</a></li>
-                        <li><a class="dropdown-item" href="#" style="color:black;">Chapter 9</a></li>
-                        <li><a class="dropdown-item" href="#" style="color:black;">Chapter 10</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-override" href="#" style="color:black;" id="navbarDropdownMenuLink2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Topics
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="#" style="color:black;">Acids and Bases</a></li>
-                        <li><a class="dropdown-item" href="#" style="color:black;">Molecules, Compounds</a></li>
-                        <li><a class="dropdown-item" href="#" style="color:black;">Chemical Reactions</a></li>
-                        <li><a class="dropdown-item" href="#" style="color:black;">Thermochemistry</a></li>
-                        <li><a class="dropdown-item" href="#" style="color:black;">Periodic Table</a></li>
-                        <li><a class="dropdown-item" href="#" style="color:black;">Chemical Bonding</a></li>
-                        <li><a class="dropdown-item" href="#" style="color:black;">Matter and States</a></li>
-                    </ul>
-                </li>-->
             </nav>
         </nav>
     </nav>
 </head>
 <body>
 
-<br>
 
-<div class="row">
-    <input class="form-control" id="name" placeholder="Name (Optional)">
-</div>
-<br><br>
+    <h2>Update Question:</h2>
 
-<h2>Question:</h2>
-
-<div class="row" style="margin-top: 10px; background-color:#F5F5F5;">
-    <div class="toolbar"></div>
-    <div id="editor"></div>
-</div>
-
-
-<div class="row">
-    <div class="col-sm-4">
-        <button id="postText" class="btn btn-primary">Post</button>
+    <div class="row" style="margin-top: 10px; background-color:#F5F5F5;">
+        <div class="toolbar"></div>
+        <div id="editor"></div>
     </div>
-    <div class="col-sm-4">
-        <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                Select Category
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="#">Acids and Bases</a></li>
-                <li><a class="dropdown-item" href="#">Molecules and Compounds</a></li>
-                <li><a class="dropdown-item" href="#">Chemical Reactions</a></li>
-                <li><a class="dropdown-item" href="#">Thermochemistry</a></li>
-                <li><a class="dropdown-item" href="#">Periodic Table</a></li>
-                <li><a class="dropdown-item" href="#">Chemical Bonding</a></li>
-                <li><a class="dropdown-item" href="#">Matter and States</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Other</a></li>
-            </ul>
+
+
+    <div class="row">
+        <div class="col-sm-4">
+            <input type="text" id="questionIdUpdate" value="questionId"><br><br>
+        </div>
+        <div class="col-sm-4">
+            <button id="updateQuestion" class="btn btn-primary">Update</button>
         </div>
     </div>
-    <div class="col-sm-4">
-        <input type="text" id="userIdPost" value="userId"><br><br>
+
+    <h2>Update Answer:</h2>
+
+    <div class="row" style="margin-top: 10px; background-color:#F5F5F5;">
+        <div class="toolbar"></div>
+        <div id="editor2"></div>
     </div>
 
-</div>
+    <div class="row">
+        <div class="col-sm-4">
+            <input type="text" id="answerIdUpdate" value="answerId"><br><br>
+        </div>
+        <div class="col-sm-4">
+            <button id="updateAnswer" class="btn btn-primary">Update</button>
+        </div>
+    </div>
 
-<h2>Update</h2>
+    <h2>Delete Question</h2>
 
-<div class="row" style="margin-top: 10px; background-color:#F5F5F5;">
-    <div class="toolbar"></div>
-    <div id="editor2"></div>
-</div>
+    <div class="row">
+        <div class="col-sm-4">
+            <input type="text" id="questionIdDelete" value="questionId"><br><br>
+        </div>
+        <div class="col-sm-4">
+            <button id="deleteQuestion" class="btn btn-primary">Delete</button>
+        </div>
+    </div>
 
-<div class="row">
-    <div class="col-sm-3">
-        <button id="updateText" class="btn btn-primary">Update</button>
-    </div>
-    <div class="col-sm-3">
-        <input type="text" id="textBoxId" value="textBoxId"><br><br>
-    </div>
-    <div class="col-sm-3">
-        <input type="text" id="userId" value="userId"><br><br>
-    </div>
-    <div class="col-sm-3">
-        <input type="text" id="categoryId" value="categoryId"><br><br>
-    </div>
-</div>
+    <h2>Delete Answer</h2>
 
-<h2>Delete</h2>
-
-<div class="row">
-
-    <div class="col-sm-4">
-        <button id="deleteText" class="btn btn-primary">Delete</button>
+    <div class="row">
+        <div class="col-sm-4">
+            <input type="text" id="answerIdDelete" value="answerId"><br><br>
+        </div>
+        <div class="col-sm-4">
+            <button id="deleteAnswer" class="btn btn-primary">Delete</button>
+        </div>
     </div>
-    <div class="col-sm-4">
-        <input type="text" id="textBoxIdDelete" value="textBoxId"><br><br>
-    </div>
-    <div class="col-sm-4">
-        <input type="text" id="userIdDelete" value="userId"><br><br>
-    </div>
-</div>
-
-<h2>Get</h2>
-<div class="row" style="margin-top: 10px; background-color:#F5F5F5;">
-    <div id="toolbar"></div>
-    <div id="editor3"></div>
-</div>
-
-<div class="row">
-    <div class="col-sm-3">
-        <button id="getText" class="btn btn-primary">Get</button>
-    </div>
-    <div class="col-sm-3">
-        <input type="text" id="textBoxIdGet" value="textBoxId"><br><br>
-    </div>
-    <div class="col-sm-3">
-        <input type="text" id="userIdGet" value="userId"><br><br>
-    </div>
-</div>
 
 </body>
 
@@ -198,110 +120,94 @@
         theme: 'snow'
     });
 
-    var quill3 = new Quill('#editor3', {
-        modules: {
-            toolbar: toolbarOptions
-        },
-
-        theme: 'snow'
-    });
-
-    
-
-    $('#postText').click(function () {
+    $('#updateQuestion').click(function () {
         window.post = quill.getContents();
 
         try {
             $.ajax({
                 async: false,
-                type: "POST",
-                url: "/api/textBoxes",
+                type: "PUT",
+                url: "/api/questions",
                 dataType: 'json',
                 contentType: 'application/json',
-                data: 
+                data:
                 JSON.stringify({
-                // addOrUpdate: 0, //0 is add, 1 is update, 2 is delete, 3 is get
-                categoryId: $('#categoryIdPost').val(),
-                userId: 1,
-                writtenText: JSON.stringify(window.post),
-                boxPrevious: null,
-                boxNext: null})
+                    writtenText: JSON.stringify(window.post),
+                    questionId: $('#questionIdUpdate').val(),
+                })
             });
             alert("success!");
-        } catch (error) {
+        }
+        catch (error) {
             alert(error);
         }
-    
-    });
+        
 
+    })
 
-    $('#updateText').click(function () {
-        window.post2 = quill2.getContents();
+    $('#updateAnswer').click(function () {
+        window.post = quill2.getContents();
 
         try {
             $.ajax({
                 async: false,
                 type: "PUT",
-                url: "/api/textBoxes",
+                url: "/api/answer",
                 dataType: 'json',
                 contentType: 'application/json',
-                data: 
+                data:
                 JSON.stringify({
-                // addOrUpdate: 1, //0 is add, 1 is update, 2 is delete, 3 is get
-                textBoxId: $('#textBoxId').val(),
-                userId: $('#userId').val(),
-                categoryId: $('#categoryId').val(),
-                writtenText: JSON.stringify(window.post2),})
+                    writtenText: JSON.stringify(window.post),
+                    answerId: $('#answerIdUpdate').val(),
+                })
             });
             alert("success!");
-        } catch (error) {
+        }
+        catch (error) {
             alert(error);
         }
-    });
+    })
 
-    $('#deleteText').click(function () {
-
+    $('#deleteQuestion').click(function () {
         try {
             $.ajax({
                 async: false,
                 type: "DELETE",
-                url: "/api/textBoxes",
-                dataType: 'json',
-                contentType: 'application/json',
-                data: 
-                JSON.stringify({
-                // addOrUpdate: 2, //0 is add, 1 is update, 2 is delete, 3 is get
-                textBoxId: $('#textBoxIdDelete').val(),
-                userId: $('#userIdDelete').val(),})
-            });
+                url: "/api/all-answer/" + $('#questionIdDelete').val(),
+            })
+            
+            $.ajax({
+                async: false,
+                type: "DELETE",
+                url: "/api/questions/" + $('#questionIdDelete').val(),
+            })
             alert("success!");
-        } catch (error) {
+        }
+        catch (error) {
             alert(error);
         }
+    })
 
-
-    });
-    $('#getText').click(function () {
+    $('#deleteAnswer').click(function () {
         try {
             $.ajax({
                 async: false,
-                type: "GET",
-                url: "/api/textBoxes/post",
-                dataType: 'json',
-                contentType: 'application/json',
-                data: 
-                JSON.stringify({
-                // addOrUpdate: 3, //0 is add, 1 is update, 2 is delete, 3 is get
-                textBoxId: $('#textBoxIdGet').val(),
-                userId: $('#userIdGet').val(),})
-            });
-            alert("success!");
-        } catch (error) {
+                type: "DELETE",
+                url: "/api/answer/" + $('#answerIdDelete').val(),
+                success: function(msg) {
+                    alert("success1");
+                },
+                error: function(msg) {
+                    alert("error: " + msg);
+                }
+            })
+        }
+        catch (error) {
             alert(error);
         }
+    })
 
-
-    });
+    
 
 
 </script>

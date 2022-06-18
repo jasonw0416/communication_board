@@ -38,100 +38,6 @@ router.get('/postQues.html', (req, res) => {
     res.sendFile(path.join(__dirname+'/../../views/postQues.html'));
 });
 
-router.get('/api/textBoxes', async (req, res) => {
-    try {
-        let results = await db.all();
-        res.json(results);
-    }
-    catch (err) {
-        console.log(err);
-        res.sendStatus(500);
-    }
-});
-
-router.post('/api/textBoxes', async (request, res) => {
-    try {
-        // console.log(JSON.parse(JSON.stringify(request.body)));
-        
-        const {categoryId, userId, writtenText, boxPrevious, boxNext, title} = request.body;
-
-        if (boxPrevious == undefined && boxNext == undefined){
-            let results = await db.create(parseInt(categoryId), parseInt(userId), writtenText, undefined, undefined, title);
-            res.json(results); 
-        }
-        else if(boxPrevious == undefined){
-            let results = await db.create(parseInt(categoryId), parseInt(userId), writtenText, undefined, parseInt(boxNext), title);
-            res.json(results); 
-            
-        }
-        else if(boxNext == undefined){
-            let results = await db.create(parseInt(categoryId), parseInt(userId), writtenText, parseInt(boxPrevious), undefined, title);
-            res.json(results); 
-        }
-        else{
-            let results = await db.create(parseInt(categoryId), parseInt(userId), writtenText, parseInt(boxPrevious), parseInt(boxNext), title);
-            res.json(results); 
-        }
-
-    } catch (err) {
-        console.log(err);
-        res.sendStatus(500);
-    }
-});
-
-router.put('/api/textBoxes', async (request, res) => {
-    try {
-        const {textBoxId, userId, categoryId, writtenText, boxNext, boxPrevious, title} = request.body;
-
-        if(boxPrevious == undefined && boxNext == undefined){
-            let results = await db.update(parseInt(categoryId), writtenText, undefined, undefined, title, parseInt(textBoxId), parseInt(userId));
-            res.json(results);
-        }
-        else if(boxNext == undefined){
-            let results = await db.update(parseInt(categoryId), writtenText, undefined, parseInt(boxPrevious), title, parseInt(textBoxId), parseInt(userId));
-            res.json(results);
-        }
-        else if(boxPrevious == undefined){
-            let results = await db.update(parseInt(categoryId), writtenText, parseInt(boxNext), undefined, title, parseInt(textBoxId), parseInt(userId));
-            res.json(results);
-        }
-        else{
-            let results = await db.update(parseInt(categoryId), writtenText, parseInt(boxNext), parseInt(boxPrevious), title, parseInt(textBoxId), parseInt(userId));
-            res.json(results);
-        }
-
-    } catch (err) {
-        console.log(err);
-        res.sendStatus(500);
-    }
-
-});
-
-router.delete('/api/textBoxes', async (request, res) => {
-    try {
-        const {textBoxId, userId} = request.body;
-
-        let results = await db.delete(parseInt(textBoxId), undefined);
-        res.json(results);
-    } catch (err) {
-        console.log(err);
-        res.sendStatus(500);
-    }
-
-});
-
-router.get('api/textBoxes/post', async (request, res) => {
-    try {
-        const {textBoxId, userId} = request.body;
-
-        let results = await db.adminRead(parseInt(textBoxId), undefined);
-        res.json(results);
-    } catch (err) {
-        console.log(err);
-        res.sendStatus(500);
-    }
-});
-
 router.get('/api/questions', async (request, res) => {
     try {
         let results = await db.questionsAll();
@@ -169,6 +75,32 @@ router.post('/api/questions', async (request, res) => {
     }
 });
 
+router.put('/api/questions', async (request, res) => {
+    try {
+        const {writtenText, questionId} = request.body;
+
+        let results = await db.updateQuestion(writtenText, parseInt(questionId));
+        res.json(results);
+    }
+    catch (err) {
+        console.log(err);
+        res.sendStatus(500);
+    }
+})
+
+router.delete('/api/questions/:questionId', async (request, res) => {
+    try {
+        const questionId = request.params.questionId;
+
+        let results = await db.deleteQuestion(parseInt(questionId));
+        res.json(results);
+    }
+    catch (err) {
+        console.log(err);
+        res.sendStatus(500);
+    }
+});
+
 router.get('/api/answer/:questionId', async (request, res) => {
     try {
         const questionId = request.params.questionId;
@@ -195,5 +127,43 @@ router.post('/api/answer', async (request, res) => {
     }
 });
 
+router.put('/api/answer', async (request, res) => {
+    try {
+        const {writtenText, answerId} = request.body;
+
+        let results = await db.updateAnswer(writtenText, parseInt(answerId));
+        res.json(results);
+    }
+    catch (err) {
+        console.log(err);
+        res.sendStatus(500);
+    }
+});
+
+router.delete('/api/answer/:answerId', async (request, res) => {
+    try {
+        const answerId = request.params.answerId;
+
+        let results = await db.deleteAnswer(parseInt(answerId));
+        res.json(results);
+    }
+    catch (err) {
+        console.log(err);
+        res.sendStatus(500);
+    }
+});
+
+router.delete('/api/all-answer/:questionId', async (request, res) => {
+    try {
+        const questionId = request.params.questionId;
+
+        let results = await db.deleteAllAnswer(parseInt(questionId));
+        res.json(results);
+    }
+    catch (err) {
+        console.log(err);
+        res.sendStatus(500);
+    }
+});
 
 module.exports = router;
